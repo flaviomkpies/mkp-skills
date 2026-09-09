@@ -1,0 +1,8 @@
+{
+  "name": "to-kindle",
+  "description": "Documentos (markdown ou HTML) viram um e-book EPUB com capa e sumário para o Kindle.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Flavio Pies"
+  }
+}

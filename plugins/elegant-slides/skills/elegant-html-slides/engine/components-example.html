@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catálogo de componentes data-driven</title>
+<style>
+  :root{
+    --ink:#102F37; --teal:#006782; --aqua:#00AFAA; --orange:#F68C36;
+    --paper:#faf8f3; --muted:#6b7a80; --line:#e3ded3;
+    --font:Tahoma,"Segoe UI",system-ui,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#000;font-family:var(--font)}
+  .deck-viewport{position:fixed;inset:0;overflow:hidden}
+  .deck-stage{position:absolute;top:0;left:0;width:1920px;height:1080px;transform-origin:top left}
+  .slide{position:absolute;inset:0;width:1920px;height:1080px;background:var(--paper);
+         color:var(--ink);visibility:hidden;opacity:0;transition:opacity .25s}
+  .slide.active{visibility:visible;opacity:1}
+  /* chrome comum (do data-deck-example) */
+  .trk{position:absolute;top:46px;left:120px;font-size:18px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);font-weight:700}
+  .conf{position:absolute;top:46px;right:120px;font-size:15px;color:var(--muted)}
+  .title{position:absolute;top:120px;left:120px;max-width:1640px;font-size:46px;line-height:1.18;font-weight:700;color:var(--ink)}
+  .subt{position:absolute;top:222px;left:120px;max-width:1640px;font-size:24px;line-height:1.35;color:var(--teal)}
+  .foot{position:absolute;bottom:44px;left:120px;right:120px;font-size:14px;color:var(--muted)}
+  /* ── CSS dos componentes (copie junto com a função que usar) ── */
+  .kpi-card{position:absolute;top:0;padding:36px 40px;border-radius:14px;background:#fff;border:1px solid var(--line)}
+  .kpi-lbl{font-size:22px;color:var(--muted);line-height:1.25}
+  .kpi-val{font-size:60px;font-weight:700;color:var(--teal);margin-top:10px}
+  .dtable{border-collapse:collapse;font-size:26px}
+  .dtable th{color:var(--muted);font-weight:600;text-align:right;padding:14px 26px;border-bottom:2px solid var(--line)}
+  .dtable th:first-child{text-align:left}
+  .dtable td{text-align:right;padding:14px 26px;border-bottom:1px solid var(--line)}
+  .dtable td:first-child{text-align:left;font-weight:600}
+  .bar-val{font-size:30px;font-weight:700;fill:var(--ink)}
+  .bar-axis{font-size:24px;fill:var(--muted)}
+</style>
+</head>
+<body>
+<div class="deck-viewport">
+<main class="deck-stage" id="deckStage">
+
+  <!-- #0 — kpiRow -->
+  <section class="slide">
+    <div class="trk">Componente · kpiRow</div><div class="conf">Confidencial</div>
+    <h2 class="title" id="s0-title"></h2><div class="subt" id="s0-subt"></div>
+    <div id="s0-kpis" style="position:absolute;top:470px;left:120px;width:1680px;height:170px"></div>
+    <div class="foot" id="s0-foot"></div>
+  </section>
+
+  <!-- #1 — dataTable (conteúdo curto → ancorado inferior) -->
+  <section class="slide">
+    <div class="trk">Componente · dataTable</div><div class="conf">Confidencial</div>
+    <h2 class="title" id="s1-title"></h2><div class="subt" id="s1-subt"></div>
+    <div style="position:absolute;bottom:130px;left:120px"><table class="dtable" id="s1-table"></table></div>
+    <div class="foot" id="s1-foot"></div>
+  </section>
+
+  <!-- #2 — barChart -->
+  <section class="slide">
+    <div class="trk">Componente · barChart</div><div class="conf">Confidencial</div>
+    <h2 class="title" id="s2-title"></h2><div class="subt" id="s2-subt"></div>
+    <div style="position:absolute;top:330px;left:120px;width:1680px"><svg id="s2-svg" viewBox="0 0 1680 620" width="1680" height="620"></svg></div>
+    <div class="foot" id="s2-foot"></div>
+  </section>
+
+  <!-- #3 — waterfall (ponte) -->
+  <section class="slide">
+    <div class="trk">Componente · waterfall</div><div class="conf">Confidencial</div>
+    <h2 class="title" id="s3-title"></h2><div class="subt" id="s3-subt"></div>
+    <div style="position:absolute;top:330px;left:120px;width:1680px"><svg id="s3-svg" viewBox="0 0 1680 620" width="1680" height="620"></svg></div>
+    <div class="foot" id="s3-foot"></div>
+  </section>
+
+</main>
+</div>
+
+<script>
+/* DATA:START — gerado por model-to-data.py a partir do modelo; edite o MODELO, não aqui */
+const DATA = {
+  years: ["2025", "2026E", "2027E", "2028E"],
+  company: "Antares (exemplo)",
+  fonte: "Mondoré · modelo de exemplo (dados fictícios)",
+  receita: [31.6, 38.2, 42.1, 45.2],
+  ebitda: [6.1, 11, 12.2, 14.7],
+  ponte_labels: ["Operacional", "Saneamento", "Sócios", "Ajustado"],
+  ponte_valores: [8.7, -1.6, -1, 6.1],
+  ponte_tipos: ["abs", "delta", "delta", "abs"],
+};
+/* DATA:END */
+
+/* ═══ helpers de formato — único lugar que decide número→texto ═══ */
+const _el  = (id) => document.getElementById(id);
+const last = (a) => a[a.length - 1];
+const fmtM = (v) => "R$" + v.toFixed(1).replace(".", ",") + "M";          // R$ milhões
+const fmtP = (v) => (v * 100).toFixed(1).replace(".", ",") + "%";          // percentual
+const tend = (a) => { const r = last(a) / a[0]; return r >= 2 ? "mais que dobra" : r > 1 ? "cresce" : "recua"; };
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BIBLIOTECA DE COMPONENTES — cada um recebe dado + alvo, sem número cravado, e
+   passa a suíte (sem overlap, rótulo/altura/escala da MESMA fonte). Copie pro deck
+   o(s) que usar + o CSS correspondente. O chrome do slide (título/subt/foot/ancoragem)
+   é do template; estes desenham só o CONTEÚDO.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* 1 ─ kpiRow(alvo, items[{label, value}]) — N cards em linha, largura auto */
+function kpiRow(targetId, items) {
+  const W = 1680, gap = 28, n = items.length, cw = Math.floor((W - gap * (n - 1)) / n);
+  _el(targetId).innerHTML = items.map((it, i) =>
+    `<div class="kpi-card" style="left:${i * (cw + gap)}px;width:${cw}px">
+       <div class="kpi-lbl">${it.label}</div><div class="kpi-val">${it.value}</div></div>`).join("");
+}
+
+/* 2 ─ dataTable(alvo, cols[], rows[{label, values[]}], fmt) */
+function dataTable(targetId, cols, rows, fmt = fmtM) {
+  const head = "<th>" + cols.join("</th><th>") + "</th>";
+  const body = rows.map(r =>
+    "<tr><td>" + r.label + "</td>" + r.values.map(v => "<td>" + fmt(v) + "</td>").join("") + "</tr>").join("");
+  _el(targetId).innerHTML = "<thead><tr>" + head + "</tr></thead><tbody>" + body + "</tbody>";
+}
+
+/* 3 ─ barChart(svg, labels[], values[], fmt) — altura, rótulo e escala saem da MESMA série */
+function barChart(svgId, labels, values, fmt = fmtM) {
+  const W = 1680, base = 540, top = 40, max = Math.max(...values);
+  const n = values.length, slot = W / n, bw = Math.min(180, slot * 0.5);
+  _el(svgId).innerHTML = values.map((v, i) => {
+    const h = (v / max) * (base - top), x = i * slot + (slot - bw) / 2, y = base - h, cx = x + bw / 2;
+    return `<rect x="${x}" y="${y}" width="${bw}" height="${h}" rx="6" fill="var(--aqua)"/>`
+         + `<text x="${cx}" y="${y - 16}" text-anchor="middle" class="bar-val">${fmt(v)}</text>`
+         + `<text x="${cx}" y="${base + 40}" text-anchor="middle" class="bar-axis">${labels[i]}</text>`;
+  }).join("");
+}
+
+/* 4 ─ waterfall(svg, steps[{label, value, type:"abs"|"delta"}], fmt) — ponte/cascata.
+      abs = barra cheia (âncora); delta = barra flutuante (verde sobe, laranja desce). */
+function waterfall(svgId, steps, fmt = fmtM) {
+  const W = 1680, base = 540, top = 40, n = steps.length, slot = W / n, bw = Math.min(160, slot * 0.55);
+  let run = 0;                                   // total corrente entre os deltas
+  const geo = steps.map(s => {
+    const start = s.type === "abs" ? 0 : run;
+    const end   = s.type === "abs" ? s.value : run + s.value;
+    run = end;
+    return { ...s, start, end };
+  });
+  const max = Math.max(...geo.flatMap(g => [g.start, g.end]));
+  const Y = (v) => base - (v / max) * (base - top);
+  _el(svgId).innerHTML = geo.map((g, i) => {
+    const x = i * slot + (slot - bw) / 2, cx = x + bw / 2;
+    const yTop = Y(Math.max(g.start, g.end)), h = Math.max(2, Y(Math.min(g.start, g.end)) - yTop);
+    const fill = g.type === "abs" ? "var(--teal)" : (g.value >= 0 ? "var(--aqua)" : "var(--orange)");
+    const lbl = g.type === "abs" ? fmt(g.value) : (g.value >= 0 ? "+" : "−") + fmt(Math.abs(g.value));
+    return `<rect x="${x}" y="${yTop}" width="${bw}" height="${h}" rx="4" fill="${fill}"/>`
+         + `<text x="${cx}" y="${yTop - 14}" text-anchor="middle" class="bar-val">${lbl}</text>`
+         + `<text x="${cx}" y="${base + 40}" text-anchor="middle" class="bar-axis">${g.label}</text>`;
+  }).join("");
+}
+
+/* ═══ renderAll — liga cada componente a DATA (nenhum número cravado aqui) ═══ */
+function renderAll() {
+  const r = DATA.receita, e = DATA.ebitda, yN = last(DATA.years), src = "Fonte: " + DATA.fonte;
+
+  // #0 kpiRow
+  _el("s0-title").textContent = "O plano entrega " + fmtM(last(r)) + " de receita e " + fmtP(last(e) / last(r)) + " de margem em " + yN;
+  _el("s0-subt").textContent  = "Indicadores-chave do último ano projetado";
+  kpiRow("s0-kpis", [
+    { label: "Receita " + yN,        value: fmtM(last(r)) },
+    { label: "EBITDA " + yN,         value: fmtM(last(e)) },
+    { label: "Margem EBITDA " + yN,  value: fmtP(last(e) / last(r)) },
+  ]);
+  _el("s0-foot").textContent = src;
+
+  // #1 dataTable
+  _el("s1-title").textContent = "A receita " + tend(r) + " de " + fmtM(r[0]) + " a " + fmtM(last(r)) + " no horizonte do plano";
+  _el("s1-subt").textContent  = "Receita e EBITDA por ano, em R$ milhões";
+  dataTable("s1-table", ["Linha", ...DATA.years], [
+    { label: "Receita", values: r }, { label: "EBITDA", values: e },
+  ]);
+  _el("s1-foot").textContent = src;
+
+  // #2 barChart
+  _el("s2-title").textContent = "A receita bruta " + tend(r) + " de " + fmtM(r[0]) + " a " + fmtM(last(r));
+  _el("s2-subt").textContent  = "Receita bruta por ano, em R$ milhões";
+  barChart("s2-svg", DATA.years, r);
+  _el("s2-foot").textContent = src;
+
+  // #3 waterfall
+  const steps = DATA.ponte_labels.map((l, i) => ({ label: l, value: DATA.ponte_valores[i], type: DATA.ponte_tipos[i] }));
+  _el("s3-title").textContent = "O EBITDA ajustado parte do operacional " + fmtM(steps[0].value) + " e chega a " + fmtM(last(steps).value);
+  _el("s3-subt").textContent  = "Ponte do EBITDA operacional ao ajustado, em R$ milhões";
+  waterfall("s3-svg", steps);
+  _el("s3-foot").textContent = src;
+}
+
+/* ═══ controller (igual ao html-template, + window.deck.show p/ testes/nav) ═══ */
+class SlidePresentation {
+  constructor() {
+    this.slides = document.querySelectorAll(".slide");
+    this.stage = document.getElementById("deckStage");
+    this.i = 0;
+    this.scale(); addEventListener("resize", () => this.scale());
+    addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight" || e.key === " ") this.show(this.i + 1);
+      if (e.key === "ArrowLeft") this.show(this.i - 1);
+    });
+    this.show(0);
+  }
+  scale() { this.stage.style.transform = "scale(" + Math.min(innerWidth / 1920, innerHeight / 1080) + ")"; }
+  show(n) { this.i = Math.max(0, Math.min(n, this.slides.length - 1)); this.slides.forEach((s, k) => s.classList.toggle("active", k === this.i)); }
+}
+
+renderAll();
+window.deck = new SlidePresentation();
+</script>
+</body>
+</html>

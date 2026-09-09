@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Layouts narrativos — catálogo</title>
+<style>
+  :root{
+    --ink:#102F37; --teal:#006782; --aqua:#00AFAA; --orange:#F68C36;
+    --paper:#faf8f3; --muted:#6b7a80; --line:#e3ded3;
+    --font:Tahoma,"Segoe UI",system-ui,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#000;font-family:var(--font)}
+  .deck-viewport{position:fixed;inset:0;overflow:hidden}
+  .deck-stage{position:absolute;top:0;left:0;width:1920px;height:1080px;transform-origin:top left}
+  .slide{position:absolute;inset:0;width:1920px;height:1080px;background:var(--paper);color:var(--ink);visibility:hidden;opacity:0;transition:opacity .25s}
+  .slide.active{visibility:visible;opacity:1}
+  .trk{position:absolute;top:46px;left:120px;font-size:18px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);font-weight:700}
+  .conf{position:absolute;top:46px;right:120px;font-size:15px;color:var(--muted)}
+  .title{position:absolute;top:120px;left:120px;max-width:1640px;font-size:46px;line-height:1.18;font-weight:700;color:var(--ink)}
+  .subt{position:absolute;top:222px;left:120px;max-width:1640px;font-size:24px;line-height:1.35;color:var(--teal)}
+  .foot{position:absolute;bottom:44px;left:120px;right:120px;font-size:14px;color:var(--muted)}
+  /* ── CSS dos layouts (copie junto com a função que usar) ── */
+  .lcard{position:absolute;top:0;height:300px;padding:40px;border-radius:14px;background:#fff;border:1px solid var(--line)}
+  .lcard-n{width:58px;height:58px;border-radius:50%;background:var(--teal);color:#fff;font-size:28px;font-weight:700;display:flex;align-items:center;justify-content:center}
+  .lcard-t{font-size:30px;font-weight:700;color:var(--ink);margin-top:26px}
+  .lcard-b{font-size:22px;color:var(--muted);margin-top:14px;line-height:1.38}
+  .spoke-t{font-size:24px;font-weight:600;fill:var(--ink)}
+  .hub-t{font-size:26px;font-weight:700;fill:#fff}
+  .step-t{font-size:34px;font-weight:700;fill:#fff}
+  .step-s{font-size:20px;fill:#fff;opacity:.92}
+  .pbox{position:absolute;top:0;height:210px;padding:36px;border-radius:14px;background:#fff;border:2px solid var(--teal)}
+  .pbox-t{font-size:30px;font-weight:700;color:var(--teal)}
+  .pbox-s{font-size:22px;color:var(--muted);margin-top:12px;line-height:1.3}
+  .parrow{position:absolute;top:64px;text-align:center;font-size:80px;color:var(--aqua);line-height:1}
+</style>
+</head>
+<body>
+<div class="deck-viewport">
+<main class="deck-stage" id="deckStage">
+
+  <section class="slide">
+    <div class="trk">Layout · cardsRow</div><div class="conf">Confidencial</div>
+    <h2 class="title" id="s0-title"></h2><div class="subt" id="s0-subt"></div>
+    <div id="s0-cards" style="position:absolute;top:440px;left:120px;width:1680px;height:300px"></div>
+    <div class="foot" id="s0-foot"></div>
+  </section>
+
+  <section class="slide">
+    <div class="trk">Layout · hubSpokes</div><div class="conf">Confidencial</div>
+    <h2 class="title" id="s1-title"></h2><div class="subt" id="s1-subt"></div>
+    <div style="position:absolute;top:320px;left:120px;width:1680px"><svg id="s1-svg" viewBox="0 0 1680 660" width="1680" height="660"></svg></div>
+    <div class="foot" id="s1-foot"></div>
+  </section>
+
+  <section class="slide">
+    <div class="trk">Layout · staircase</div><div class="conf">Confidencial</div>
+    <h2 class="title" id="s2-title"></h2><div class="subt" id="s2-subt"></div>
+    <div style="position:absolute;top:330px;left:120px;width:1680px"><svg id="s2-svg" viewBox="0 0 1680 620" width="1680" height="620"></svg></div>
+    <div class="foot" id="s2-foot"></div>
+  </section>
+
+  <section class="slide">
+    <div class="trk">Layout · processFlow</div><div class="conf">Confidencial</div>
+    <h2 class="title" id="s3-title"></h2><div class="subt" id="s3-subt"></div>
+    <div id="s3-flow" style="position:absolute;top:450px;left:120px;width:1680px;height:210px"></div>
+    <div class="foot" id="s3-foot"></div>
+  </section>
+
+</main>
+</div>
+
+<script>
+/* DATA:START — conteúdo narrativo (do DOSSIER/INTENT, não do modelo numérico) */
+const DATA = {
+  fonte: "Mondoré · exemplo de layouts (conteúdo fictício)",
+  pilares: [
+    { n: "1", title: "Coleta inteligente", body: "Roteirização reduz o frete de coleta dos resíduos na origem" },
+    { n: "2", title: "Tratamento próprio", body: "Processo interno captura margem antes da revenda" },
+    { n: "3", title: "Revenda de ácidos", body: "Subprodutos viram receita recorrente de maior valor" },
+  ],
+  hub: "Plataforma Antares",
+  spokes: ["Coleta", "Tratamento", "Revenda", "Logística", "Compliance"],
+  fases: [
+    { label: "2025", sub: "Base operacional" },
+    { label: "2026", sub: "Eficiência de custo" },
+    { label: "2027", sub: "Novos projetos" },
+    { label: "2028", sub: "Escala plena" },
+  ],
+  cadeia: [
+    { label: "Insumo", sub: "Resíduo coletado na origem" },
+    { label: "Processo", sub: "Tratamento e refino interno" },
+    { label: "Produto", sub: "Ácido revendido ao mercado" },
+  ],
+};
+/* DATA:END */
+
+const _el = (id) => document.getElementById(id);
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   LAYOUTS NARRATIVOS — portados do catálogo de padrões do mondore_pptx.
+   Cada um recebe conteúdo + alvo e passa a suíte. Copie a função + o CSS.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* 3col_cards — N cards paralelos (síntese/payoff): badge nº + título + corpo */
+function cardsRow(targetId, cards) {
+  const W = 1680, gap = 36, n = cards.length, cw = Math.floor((W - gap * (n - 1)) / n);
+  _el(targetId).innerHTML = cards.map((c, i) =>
+    `<div class="lcard" style="left:${i * (cw + gap)}px;width:${cw}px">
+       <div class="lcard-n">${c.n}</div><div class="lcard-t">${c.title}</div><div class="lcard-b">${c.body}</div></div>`).join("");
+}
+
+/* hub_and_spokes — hub central + N satélites em volta, ligados por linhas */
+function hubSpokes(svgId, hub, spokes) {
+  const W = 1680, H = 660, cx = W / 2, cy = H / 2, R = 215, hubR = 132, spR = 86;
+  const pos = spokes.map((_, i) => { const a = -Math.PI / 2 + i * 2 * Math.PI / spokes.length; return [cx + R * Math.cos(a), cy + R * Math.sin(a)]; });
+  let s = pos.map(([x, y]) => `<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="var(--line)" stroke-width="3"/>`).join("");
+  s += spokes.map((l, i) => `<circle cx="${pos[i][0]}" cy="${pos[i][1]}" r="${spR}" fill="#fff" stroke="var(--aqua)" stroke-width="3"/>`
+    + `<text x="${pos[i][0]}" y="${pos[i][1]}" text-anchor="middle" dominant-baseline="middle" class="spoke-t">${l}</text>`).join("");
+  const w = hub.split(" "), h1 = w.slice(0, Math.ceil(w.length / 2)).join(" "), h2 = w.slice(Math.ceil(w.length / 2)).join(" ");
+  s += `<circle cx="${cx}" cy="${cy}" r="${hubR}" fill="var(--teal)"/>`
+    + `<text x="${cx}" y="${cy}" text-anchor="middle" class="hub-t"><tspan x="${cx}" dy="-0.1em">${h1}</tspan><tspan x="${cx}" dy="1.15em">${h2}</tspan></text>`;
+  _el(svgId).innerHTML = s;
+}
+
+/* staircase_ascending — N degraus de altura crescente, cor que aprofunda por fase */
+function staircase(svgId, steps) {
+  const W = 1680, n = steps.length, sw = Math.min(330, (W - 30 * (n - 1)) / n), gap = (W - sw * n) / (n - 1 || 1);
+  const baseY = 560, rise = (baseY - 120) / n;
+  _el(svgId).innerHTML = steps.map((st, i) => {
+    const x = i * (sw + gap), h = rise * (i + 1), y = baseY - h, op = (0.66 + 0.34 * (i + 1) / n).toFixed(2);
+    return `<rect x="${x}" y="${y}" width="${sw}" height="${h}" rx="10" fill="var(--teal)" opacity="${op}"/>`
+      + `<text x="${x + sw / 2}" y="${y + 52}" text-anchor="middle" class="step-t">${st.label}</text>`
+      + `<text x="${x + sw / 2}" y="${y + 94}" text-anchor="middle" class="step-s">${st.sub}</text>`;
+  }).join("");
+}
+
+/* input_process_output / value_chain — N caixas em fluxo, setas entre elas */
+function processFlow(targetId, steps) {
+  const W = 1680, aw = 76, n = steps.length, bw = Math.floor((W - aw * (n - 1)) / n);
+  let html = "";
+  steps.forEach((st, i) => {
+    html += `<div class="pbox" style="left:${i * (bw + aw)}px;width:${bw}px"><div class="pbox-t">${st.label}</div><div class="pbox-s">${st.sub}</div></div>`;
+    if (i < n - 1) html += `<div class="parrow" style="left:${i * (bw + aw) + bw}px;width:${aw}px">›</div>`;
+  });
+  _el(targetId).innerHTML = html;
+}
+
+/* ═══ renderAll — liga cada layout ao DATA ═══ */
+function renderAll() {
+  const src = "Fonte: " + DATA.fonte;
+  _el("s0-title").textContent = "Três alavancas sustentam o resultado da Antares";
+  _el("s0-subt").textContent = "As frentes que compõem a margem do negócio";
+  cardsRow("s0-cards", DATA.pilares); _el("s0-foot").textContent = src;
+
+  _el("s1-title").textContent = "A plataforma conecta " + DATA.spokes.length + " capacidades num só fluxo";
+  _el("s1-subt").textContent = "Mapa conceitual do modelo operacional";
+  hubSpokes("s1-svg", DATA.hub, DATA.spokes); _el("s1-foot").textContent = src;
+
+  _el("s2-title").textContent = "A ambição sobe em " + DATA.fases.length + " fases até a escala plena";
+  _el("s2-subt").textContent = "Trajetória do plano, ano a ano";
+  staircase("s2-svg", DATA.fases); _el("s2-foot").textContent = src;
+
+  _el("s3-title").textContent = "Do resíduo ao ácido revendido em " + DATA.cadeia.length + " etapas";
+  _el("s3-subt").textContent = "Cadeia de valor da Antares";
+  processFlow("s3-flow", DATA.cadeia); _el("s3-foot").textContent = src;
+}
+
+class SlidePresentation {
+  constructor() {
+    this.slides = document.querySelectorAll(".slide"); this.stage = document.getElementById("deckStage"); this.i = 0;
+    this.scale(); addEventListener("resize", () => this.scale());
+    addEventListener("keydown", (e) => { if (e.key === "ArrowRight" || e.key === " ") this.show(this.i + 1); if (e.key === "ArrowLeft") this.show(this.i - 1); });
+    this.show(0);
+  }
+  scale() { this.stage.style.transform = "scale(" + Math.min(innerWidth / 1920, innerHeight / 1080) + ")"; }
+  show(n) { this.i = Math.max(0, Math.min(n, this.slides.length - 1)); this.slides.forEach((s, k) => s.classList.toggle("active", k === this.i)); }
+}
+renderAll();
+window.deck = new SlidePresentation();
+</script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+{
+  "name": "xlsx-author",
+  "description": "Produzir planilhas Excel em arquivo, sem abrir o Excel.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Flavio Pies"
+  }
+}

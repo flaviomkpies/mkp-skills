@@ -1,0 +1,144 @@
+<!-- snippets.html — blocos copy-paste da identidade reThink / reMarkable. NÃO é um deck; é catálogo de partes.
+     Tokens + fontes: ver design.md. Arquétipos: ver LAYOUTS.md.
+     Regra: BRANCO, monocromático. Fraunces (serifa) SÓ em título; Hanken Grotesk (sans) no resto.
+     Assinatura = régua vertical à esquerda + barra grossa ao lado do título. Cor só em link. Zero sombra/gradiente colorido. -->
+
+<!-- ============================================================
+     1. CSS base do tema (no <style>, junto do viewport-base.css)
+     ============================================================ -->
+<style>
+.slide{font-family:var(--sans);color:var(--ink);}
+.pad{padding:84px 130px;}
+.lrule{position:absolute;left:104px;top:0;bottom:0;width:1px;background:var(--hair);}      /* fio fino altura cheia */
+.lbar{position:absolute;left:103px;width:4px;background:var(--ink);}                         /* barra grossa do título */
+.topnav{position:absolute;left:150px;right:130px;top:54px;font-family:var(--sans);font-size:25px;color:var(--g2);}
+.topnav b{color:var(--ink);font-weight:700;} .topnav span{margin-right:44px;}
+.pager{float:right;color:var(--g2);letter-spacing:.04em;}                                    /* ‹ 04 / 13 › topo-direito */
+/* linhas estilo workbook (fio full-width + rótulo bold + helper itálico) */
+.lrow{border-top:1px solid var(--hair);padding:18px 0;}
+.lrow .lab{font-family:var(--sans);font-weight:700;font-size:27px;}
+.helper{font-family:var(--sans);font-style:italic;font-size:23px;color:var(--g1);}            /* microcopy de campo */
+.numrow{border-top:1px solid var(--hair);padding:16px 0;font-size:26px;}                       /* lista numerada */
+.vdiv{border-left:1px solid var(--hair-strong);}                                               /* divisor vertical 2-col */
+.serif{font-family:var(--serif);font-weight:400;line-height:1.05;color:var(--ink);}
+.sub{font-family:var(--sans);font-size:34px;color:var(--g1);}
+.lead{font-family:var(--sans);font-weight:700;font-size:33px;line-height:1.45;}
+.sh{font-family:var(--sans);font-weight:700;font-size:31px;margin:0 0 6px;}
+.body{font-family:var(--sans);font-size:30px;line-height:1.5;color:var(--ink);}
+.cb{position:absolute;left:150px;right:140px;top:360px;}                                     /* conteúdo flui do topo (reThink) */
+.foot{position:absolute;left:130px;bottom:46px;font-family:var(--sans);font-size:22px;color:var(--g2);}
+.pgno{position:absolute;right:130px;bottom:46px;font-family:var(--sans);font-size:22px;color:var(--g2);}
+a,.link{color:var(--link);text-decoration:underline;}
+</style>
+
+<!-- ============================================================
+     2. PÁGINA DE CONTEÚDO — nav topo + régua/barra + título serifa + corpo sans ancorado à base
+     ============================================================ -->
+<section class="slide pad" style="background:var(--paper);">
+  <div class="lrule"></div>
+  <div class="topnav"><span class="pager">‹&nbsp; 02 / 13 &nbsp;›</span><span><b>Intro</b></span><span>Annual review</span><span>Mental models</span><span>Clear thinking</span></div>
+  <div class="lbar" style="top:150px;height:118px;"></div>
+  <h2 class="serif" style="font-size:96px;margin:150px 0 0;">Welcome</h2>
+  <div class="cb">
+    <p class="lead" style="max-width:30em;margin:0 0 30px;">Parágrafo de abertura em bold sans, curto, afirma a ideia da página.</p>
+    <div class="sh">Subhead em bold</div>
+    <p class="body" style="max-width:34em;margin:0;">corpo em sans, line-height 1.5, muito respiro. a serifa fica só no título. link assim: <span class="link">remarkable.com</span></p>
+  </div>
+  <div class="foot">Intro</div>
+</section>
+
+<!-- ============================================================
+     2b. LABEL-ROWS (preferir a cards) — fio full-width + rótulo bold + helper itálico + conteúdo
+     ============================================================ -->
+<div class="cb">
+  <div class="lrow"><span class="lab">Goal</span> &nbsp;<span class="helper">o objetivo, em uma frase</span><div class="body" style="margin-top:6px;">conteúdo da linha</div></div>
+  <div class="lrow"><span class="lab">Success metric</span> &nbsp;<span class="helper">como você mede o sucesso?</span><div class="body" style="margin-top:6px;">conteúdo</div></div>
+  <div class="lrow"><span class="lab">Next 30 days</span> &nbsp;<span class="helper">1–3 passos imediatos</span><div class="body" style="margin-top:6px;">conteúdo</div></div>
+</div>
+
+<!-- 2c. LISTA NUMERADA (fio full-width entre itens) -->
+<div class="cb">
+  <div class="numrow">1.&nbsp;&nbsp; item</div><div class="numrow">2.&nbsp;&nbsp; item</div><div class="numrow">3.&nbsp;&nbsp; item</div>
+</div>
+
+<!-- 2d. DUAS COLUNAS com divisor vertical (2 lados em paralelo) -->
+<div class="cb" style="display:flex;gap:0;">
+  <div style="flex:1;padding-right:56px;"><div class="sh" style="border-top:1px solid var(--hair);padding-top:12px;">baixo risco</div><ul class="body" style="padding-left:1.1em;">…</ul></div>
+  <div class="vdiv" style="flex:1;padding-left:56px;"><div class="sh" style="border-top:1px solid var(--hair);padding-top:12px;">alto risco</div><ul class="body" style="padding-left:1.1em;">…</ul></div>
+</div>
+
+<!-- ============================================================
+     3. CAPA — tipográfica limpa (DEFAULT): rótulo serifa + título grande serifa centralizado + rodapé com fio.
+        Imagem é OPCIONAL e tem que ser própria (duotone) — NUNCA copiar a esfera do reThink. Bloco §3b abaixo.
+     ============================================================ -->
+<section class="slide" style="background:var(--paper);">
+  <div style="position:absolute;left:0;right:0;top:340px;text-align:center;color:var(--g1);" class="serif">Rótulo / coleção</div>
+  <div style="position:absolute;left:0;right:0;top:418px;text-align:center;font-size:104px;" class="serif">Título do deck</div>
+  <div style="position:absolute;left:0;right:0;top:606px;text-align:center;font-family:var(--sans);font-style:italic;font-size:30px;color:var(--g1);">subtítulo em uma linha</div>
+  <!-- duotone split-circle B&W: metade rede de pontos, metade estipulado. Ideal: foto duotone real OU
+       gerar denso via script (random dots dentro de <clipPath> circle). Template estático abaixo. -->
+  <div style="position:absolute;left:0;right:0;top:430px;text-align:center;">
+  <svg viewBox="0 0 600 600" style="width:640px;height:640px;">
+    <defs>
+      <clipPath id="cc"><circle cx="300" cy="300" r="300"/></clipPath>
+      <pattern id="stip" width="7" height="7" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#cfcfcf"/></pattern>
+    </defs>
+    <g clip-path="url(#cc)">
+      <rect x="0" y="0" width="300" height="600" fill="#0d0d0d"/>
+      <rect x="300" y="0" width="300" height="600" fill="#161616"/>
+      <rect x="300" y="0" width="300" height="600" fill="url(#stip)"/>
+      <!-- rede (densificar: ~70 dots + linhas curtas <70px) -->
+      <g stroke="#fff" stroke-width="0.6" opacity="0.55">
+        <line x1="70" y1="120" x2="140" y2="180"/><line x1="140" y1="180" x2="90" y2="250"/><line x1="180" y1="300" x2="120" y2="360"/>
+      </g>
+      <g fill="#fff">
+        <circle cx="70" cy="120" r="3"/><circle cx="140" cy="180" r="2.4"/><circle cx="90" cy="250" r="3.2"/><circle cx="180" cy="300" r="2.6"/><circle cx="120" cy="360" r="2.2"/><circle cx="210" cy="430" r="3"/><circle cx="60" cy="420" r="2"/>
+      </g>
+    </g>
+  </svg></div>
+  <div style="position:absolute;left:130px;right:130px;bottom:120px;height:1px;background:var(--hair);"></div>
+  <div class="foot" style="bottom:70px;">reMarkable &nbsp;|&nbsp; Farnam Street</div>
+  <div class="pgno" style="bottom:70px;">Workbook 2025 / 2026</div>
+</section>
+
+<!-- ============================================================
+     4. DIVISÓRIA DE SEÇÃO — título serifa + subtítulo sans + imagem duotone full-width
+     ============================================================ -->
+<section class="slide pad" style="background:var(--paper);">
+  <div class="lrule"></div>
+  <div class="topnav"><span>Intro</span><span><b>Annual review</b></span><span>Mental models</span><span>Clear thinking</span></div>
+  <div class="lbar" style="top:150px;height:96px;"></div>
+  <h2 class="serif" style="font-size:84px;margin:150px 0 0;">Annual review</h2>
+  <p class="sub" style="margin:16px 0 0;">Cut noise. See patterns. Act decisively.</p>
+  <div style="position:absolute;left:150px;right:130px;top:430px;bottom:130px;background:radial-gradient(circle at 40% 45%, #5a5a5a 0%, #1c1c1c 70%);"></div>
+  <div class="foot">Framework by Farnam Street and reMarkable</div>
+</section>
+
+<!-- ============================================================
+     5. CITAÇÃO — serifa grande + barra grossa à esquerda + atribuição sans itálico
+     ============================================================ -->
+<section class="slide pad" style="background:var(--paper);">
+  <div class="lbar" style="left:120px;top:200px;height:300px;"></div>
+  <blockquote class="serif" style="font-size:76px;line-height:1.12;max-width:18ch;margin:200px 0 0 60px;border:0;">
+    “It is a good idea to start the year by writing down exactly what you want to accomplish”
+    <footer style="font-family:var(--sans);font-style:italic;font-size:28px;color:var(--g1);margin-top:28px;">— David Ogilvy</footer>
+  </blockquote>
+</section>
+
+<!-- ============================================================
+     6. ALVO / figura geométrica (exercício) — concêntricos + ponto, só tinta
+     ============================================================ -->
+<svg viewBox="0 0 260 260" style="width:260px;height:260px;" fill="none">
+  <circle cx="130" cy="130" r="120" stroke="var(--ink)" stroke-width="3"/>
+  <circle cx="130" cy="130" r="74" stroke="var(--ink)" stroke-width="3"/>
+  <circle cx="130" cy="130" r="34" fill="var(--ink)"/>
+</svg>
+
+<!-- ============================================================
+     7. LISTA DE 3 COLUNAS (sub-rótulo sans + itens) — fio superior por coluna
+     ============================================================ -->
+<div style="display:flex;gap:50px;">
+  <div style="flex:1;min-width:0;"><div class="sh" style="border-top:1px solid var(--hair);padding-top:12px;">aulas</div><ul class="body" style="padding-left:1.1em;margin:8px 0 0;"><li>item</li><li>item</li></ul></div>
+  <div style="flex:1;min-width:0;"><div class="sh" style="border-top:1px solid var(--hair);padding-top:12px;">palestras</div><ul class="body" style="padding-left:1.1em;margin:8px 0 0;"><li>item</li></ul></div>
+  <div style="flex:1;min-width:0;"><div class="sh" style="border-top:1px solid var(--hair);padding-top:12px;">escrita</div><ul class="body" style="padding-left:1.1em;margin:8px 0 0;"><li>item</li></ul></div>
+</div>

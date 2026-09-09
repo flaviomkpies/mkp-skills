@@ -1,0 +1,63 @@
+{
+  "name": "mkp-skills",
+  "description": "Skills da casa, mantidas pelo Flavio: escrita, e-book, apresentações, Office e análise.",
+  "owner": {
+    "name": "Flavio Pies"
+  },
+  "plugins": [
+    {
+      "name": "writing",
+      "description": "Escrita: newsletter, posts curtos, longform, humanizar, fact-check; com DNA de escrita próprio.",
+      "source": "./plugins/writing",
+      "version": "1.0.0"
+    },
+    {
+      "name": "to-kindle",
+      "description": "Documentos (markdown ou HTML) viram um e-book EPUB com capa e sumário para o Kindle.",
+      "source": "./plugins/to-kindle",
+      "version": "1.0.0"
+    },
+    {
+      "name": "elegant-slides",
+      "description": "Deck HTML preto e branco em 16:9 (elegant-html-slides) e conversão do deck em PowerPoint editável (elegant-html-to-pptx).",
+      "source": "./plugins/elegant-slides",
+      "version": "1.0.0"
+    },
+    {
+      "name": "docx",
+      "description": "Criar, ler e editar documentos Word.",
+      "source": "./plugins/docx",
+      "version": "1.0.0"
+    },
+    {
+      "name": "xlsx-author",
+      "description": "Produzir planilhas Excel em arquivo, sem abrir o Excel.",
+      "source": "./plugins/xlsx-author",
+      "version": "1.0.0"
+    },
+    {
+      "name": "markitdown",
+      "description": "Converter PDF, Word, PowerPoint, Excel e imagens em texto para o Claude ler.",
+      "source": "./plugins/markitdown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "text-to-bullets",
+      "description": "Transformar texto denso em tópicos rastreáveis, cada um com a fonte.",
+      "source": "./plugins/text-to-bullets",
+      "version": "1.0.0"
+    },
+    {
+      "name": "capivara",
+      "description": "Pesquisa de fundo sobre pessoa ou empresa: notícias, redes e fontes públicas.",
+      "source": "./plugins/capivara",
+      "version": "1.0.0"
+    },
+    {
+      "name": "watch",
+      "description": "Assistir a um vídeo (link ou arquivo) e resumir, com transcrição por Whisper.",
+      "source": "./plugins/watch",
+      "version": "1.0.0"
+    }
+  ]
+}

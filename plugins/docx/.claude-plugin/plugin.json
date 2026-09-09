@@ -1,0 +1,8 @@
+{
+  "name": "docx",
+  "description": "Criar, ler e editar documentos Word.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Flavio Pies"
+  }
+}
