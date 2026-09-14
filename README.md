@@ -1,13 +1,13 @@
 # mkp-skills
 
-Skills da casa para o Claude Code, mantidas pelo Flavio. Repositório privado.
+Skills da casa para o Claude Code, mantidas pelo Flavio.
 
 ## Instalar (uma vez)
 
-No Claude Code, com acesso a este repositório na sua conta do GitHub:
+No Claude Code:
 
 ```
-/plugin marketplace add fmkpMondore/mkp-skills
+/plugin marketplace add flaviomkpies/mkp-skills
 /plugin install writing@mkp-skills
 /plugin install to-kindle@mkp-skills
 /plugin install elegant-slides@mkp-skills
