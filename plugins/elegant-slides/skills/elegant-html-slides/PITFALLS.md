@@ -112,10 +112,10 @@ concatenados numa linha de centenas de KB), onde a ferramenta Edit não casa:
 
 ## 4. Integridade analítica — a regra que mais importa
 
-Esta passou do HTML pro número, e foi o erro que o Flavio mais cobrou.
+Esta passou do HTML pro número, e foi o erro que o autor mais cobrou.
 
 - **NUNCA "conta de chegada" (plug).** Montei uma ponte com uma linha de −968 calibrada para bater num
-  alvo acordado. O Flavio perguntou direto: "foi bottom-up ou conta de chegada?". Era plug. **Cada linha
+  alvo acordado. O o autor perguntou direto: "foi bottom-up ou conta de chegada?". Era plug. **Cada linha
   de uma ponte/cascata tem que ter origem rastreável na fonte.** Se o bottom-up não bate no número alvo,
   **diga isso** (mostre o resíduo nomeado, ou que o alvo é negociado/aproximado) — não esconda num "outros".
 - **Atribuição de fonte é fato, não conveniência.** O deck atribuía R$8M a um "laudo Diligia (Fev/26)"
@@ -140,7 +140,7 @@ Esta passou do HTML pro número, e foi o erro que o Flavio mais cobrou.
 
 ## 6. A suíte de testes tem contrato implícito — e falha em VERDE quando o deck não o cumpre
 
-> Origem: BIZ-259, 01/09/2026. `test-deck.py` passou **0 FAIL · 0 WARN** num deck com o texto
+> Origem: <issue>, 01/09/2026. `test-deck.py` passou **0 FAIL · 0 WARN** num deck com o texto
 > sobrepondo o rodapé em dois slides. Quem pegou foi olhar o print renderizado. Gate verde não é
 > prova de que está certo — é prova de que o teste conseguiu medir.
 
@@ -167,6 +167,16 @@ elemento decorativo com texto.
 `window.deck.show(i)` por slide, folha de contato 3×N). Custa ~40s e é o único passo que pega o que
 o teste não sabe medir. Quem renomeia classe do tema herda a cegueira junto com o layout.
 
-**Chrome para os scripts:** `--chrome /opt/google/chrome/chrome` (default do `test-deck.py`).
+**Chrome para os scripts:** os scripts acham sozinhos (`$CHROME_BIN`, depois PATH, depois caminhos comuns de Linux e macOS). Para forçar: `--chrome /caminho/do/chrome`.
 O `playwright.chromium.launch()` sem `executable_path` falha nesta VPS, o browser do Playwright
 não está instalado.
+
+## Falso positivo do `test-deck.py` em deck de posição absoluta (10/09/2026, Proposta C Acme)
+
+O gate de browser acusou "conteúdo sobrepõe rodapé (cont.bottom 1066 > 1001)" e "conteúdo sobe sobre
+título (cont.top 0)" em dois slides que, medidos pelo DOM a 1920×1080 com `transform:none`, terminavam
+em 928 px. A sonda escolhe a folha mais baixa por `getBoundingClientRect` no viewport do teste, e em
+deck com `.slide` absoluto e stage escalado a medida sai deslocada. **Antes de corrigir um FAIL de
+sobreposição, meça você mesmo:** liste os filhos do `<section>` com `top`/`bottom` em px de palco e
+compare com 271 e 1001. Se bate, registre a divergência e siga; o gate ainda não tem esse caso coberto
+por `tests/test_gates.py`.

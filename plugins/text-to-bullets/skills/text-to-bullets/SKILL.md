@@ -1,9 +1,8 @@
 ---
 name: text-to-bullets
-description: "Converte texto denso em bullets rastreáveis — cada bullet carrega a fonte, e um gate determinístico rejeita número, citação e quote que não existam no original. Use para 'transformar em tópicos', 'bullets do documento', 'extrair as afirmações', preparar slide ou alimentar a Fase 2 do /rigor-academico."
-category: conteudo-editorial
+description: "Converte texto denso em bullets rastreáveis — cada bullet carrega a fonte, e um gate determinístico rejeita número, citação e quote que não existam no original. Use para 'transformar em tópicos', 'bullets do documento', 'extrair as afirmações', preparar slide ou alimentar a Fase 2 do um fluxo de rigor de fontes."
 argument-hint: "<arquivo> [--modo academico|executivo|reuniao] (ex: /text-to-bullets Dissertacao.md --modo academico)"
-allowed-tools: Read Glob Grep Bash Write Edit
+allowed-tools: Read, Glob, Grep, Bash, Write, Edit
 ---
 
 # text-to-bullets — tópicos que sobrevivem a uma pergunta da banca
@@ -14,9 +13,9 @@ roda sem LLM.
 
 ## O que substitui
 
-Nada é aposentado. Ela **automatiza a Fase 2 do `/rigor-academico`** (a tabela
+Nada é aposentado. Ela **automatiza a Fase 2 do um fluxo de rigor de fontes** (a tabela
 `afirmação → fonte → evidência`, hoje montada à mão) e serve de entrada para ela. Não confundir com
-`/summarize-article` (um artigo → PDF de 7 páginas) nem com `/writing` (produzir prosa).
+uma skill de resumo de artigo (um artigo → PDF de 7 páginas) nem com `/writing` (produzir prosa).
 
 ## Crítica ao estado da arte (por que esta skill existe)
 
@@ -82,7 +81,6 @@ artefato onde a contagem se reproduz (`concept_matrix_FINAL.csv`, aba do funil),
 
 **1. Pré-passada determinística (sem LLM).** Extrair do documento a **lista de fontes permitidas**
 (a seção de referências) e o texto integral. Essa lista é o dicionário fechado contra o qual toda
-citação será checada. Reusa a mesma leitura de `host-scripts/audit_referencias.py`.
 
 **2. Extração por seção, com cerca XML.** Uma passada por seção (não pelo documento inteiro — o
 recall despenca em texto longo), com o texto dentro de `<documento>` e a instrução pedindo
@@ -109,7 +107,7 @@ Ele falha (`exit 1`) quando:
 - `AFIRMA`/`EVIDE` sem fonte, `DECISAO` com fonte externa, ou `ACHADO` sem artefato rastreável.
 
 **5. Saída dupla.** `.md` para ler (agrupado por seção, fonte em linha) e `.jsonl` para máquina
-(alimenta `/rigor-academico`, slide, planilha).
+(alimenta um fluxo de rigor de fontes, slide, planilha).
 
 ## Estilo do bullet
 
@@ -117,13 +115,13 @@ Ele falha (`exit 1`) quando:
 - **Um bullet, uma proposição.** Bullet com "e" coordenando duas afirmações vira dois.
 - Número vem com a unidade e o denominador (`58 dos 81 estudos`, não `58 estudos`).
 - Quote literal entre aspas e com localizador; paráfrase nunca vira quote.
-- **Teto de 14 palavras. Alvo de 10.** *(Correção do Flavio, 27/08: a primeira versão dizia 28 —
+- **Teto de 14 palavras. Alvo de 10.** *(Correção do autor, 27/08: a primeira versão dizia 28 —
   "ficou verbose e complicado ainda". Ele tem razão: 28 palavras não é bullet, é parágrafo com
   marcador na frente. Estourar 14 é sinal de proposição dupla, não de assunto complexo.)*
 - **O rótulo do tipo não vai na página.** `AFIRMA`/`EVIDE`/`ACHADO` existem no JSON, para o gate.
   Impressos antes de cada linha, viram ruído. A distinção que o leitor precisa já vem de graça no
   crédito: "extração própria" e "decisão minha" dizem tudo, sem etiqueta.
-- **O crédito não fica ao lado do bullet: vira número sobrescrito.** *(Segunda correção do Flavio,
+- **O crédito não fica ao lado do bullet: vira número sobrescrito.** *(Segunda correção do autor,
   27/08.)* Cada fonte recebe um número por ordem de primeira aparição; o bullet leva só `#super`, e
   a lista numerada vem **depois de todos os bullets**. Ganha três coisas: a linha não quebra por
   causa do crédito, fonte repetida não repete texto, e a referência pode aparecer por extenso
@@ -143,5 +141,5 @@ casava `47` dentro de um DOI, e a ausência da checagem de proximidade.
 
 O gate prova **fidelidade ao documento**, não **verdade do documento**: se o texto-fonte já erra o
 ano de uma referência, o bullet erra junto e passa. Verdade contra fonte primária é
-`/rigor-academico`. E o gate não julga **seleção** — bullet fiel mas irrelevante passa; isso é
+um fluxo de rigor de fontes. E o gate não julga **seleção** — bullet fiel mas irrelevante passa; isso é
 julgamento humano.

@@ -22,8 +22,8 @@ Posts curtos para redes sociais. Diferente de newsletter (longo, narrativo) e lo
 
 ## Procedimento (LinkedIn)
 
-1. **Brain dump:** Flavio passa material bruto ou ideia.
-2. **Hook:** sugerir 2-3 versões da primeira frase. Flavio escolhe.
+1. **Brain dump:** o autor passa material bruto ou ideia.
+2. **Hook:** sugerir 2-3 versões da primeira frase. O autor escolhe.
 3. **Corpo:** 3-5 parágrafos curtos. Densidade > completude.
 4. **Fechamento:** sem call-to-action genérico ("o que vocês acham?"). Pode ter pergunta específica conectada ao tema, ou simplesmente parar quando o ponto foi feito.
 5. **Polish:** humanize pass + remover tudo que parece consultoria de LinkedIn padrão.
@@ -52,22 +52,22 @@ Se o post vai pro LinkedIn E Twitter:
 - **Não publicar idêntico nos dois.** Plataformas têm tom diferente.
 
 
-## Ciclo de revisão (Flavio escreve, IA assiste)
+## Ciclo de revisão (o autor escreve, IA assiste)
 
 Padrão validado em 2026-05-07 (caso PUC-MG):
 
 1. **v1 (IA):** primeiro draft com base no material lido (Granola, etc).
-2. **v2 (IA refino):** ajustes a partir de feedback do Flavio sem ele ter escrito ainda.
-3. **v3 (Flavio):** Flavio escreve a versão dele, geralmente é a virada qualitativa do post.
+2. **v2 (IA refino):** ajustes a partir de feedback do autor sem ele ter escrito ainda.
+3. **v3 (o autor):** o autor escreve a versão dele, geralmente é a virada qualitativa do post.
 4. **v4 (IA ajustes mínimos):** IA revisa formulação, fluxo, regência, redundância — **NÃO** corta conteúdo que o humano adicionou. Ver `feedback_human_adds_context_ai_respects.md`.
-5. **vf (Flavio publica):** Flavio aplica últimos ajustes (espaçamento, links encurtados, anexos visuais) e publica.
+5. **vf (o autor publica):** o autor aplica últimos ajustes (espaçamento, links encurtados, anexos visuais) e publica.
 
 ## Versionamento dentro do arquivo
 
 Todas as versões ficam no **mesmo arquivo .md**, em seções H1 (`# v1`, `# v2`, ...). Nunca sobrescrever — cada iteração preserva histórico. Convenção:
 
 - `# v1`, `# v2`, ... — drafts iterativos
-- `# v3 - Flavio` — versão escrita pelo humano (marcar autoria)
+- `# v3 - o autor` — versão escrita pelo humano (marcar autoria)
 - `# vf - publicada` — versão final que foi publicada (marca o release)
 - `**Feedback:**` em itálico abaixo de versão descartada — registra crítica recebida
 
@@ -75,9 +75,9 @@ Ver memory `feedback_versioning_h1_inline.md` para regra completa.
 
 ## Output esperado
 
-Arquivo `.md` na pasta apropriada do vault (perguntar a Flavio se não óbvio):
-- vinculado à newsletter → derivar do átomo `Efforts/Projects/Newsletter AI & Negócios/_Atomos/artigo-<slug>.md` (pipeline /newsletter-post); salvar o post curto em `Efforts/Posts/<canal>/`.
-- `Efforts/Posts/<canal>/<data>-<slug>.md` se for standalone.
+Arquivo `.md` na pasta apropriada do vault (perguntar ao autor se não óbvio):
+- vinculado à newsletter → derivar do átomo `<sua pasta de textos>`; salvar o post curto em `<sua pasta de textos>`.
+- `<sua pasta de textos>` se for standalone.
 
 Frontmatter mínimo:
 ```yaml

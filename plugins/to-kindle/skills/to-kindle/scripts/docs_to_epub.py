@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Veredas OS — docs_to_epub (CLI)
+workspace de origem — docs_to_epub (CLI)
 
 Purpose:     Junta documentos (markdown e/ou HTML, inclusive cadernos /show-me com prints
              em base64) num EPUB com capa, sumário e um capítulo por arquivo; opcionalmente
@@ -62,7 +62,7 @@ def cover(path: Path, title: str, sub: str) -> None:
 def main() -> int:
     ap = argparse.ArgumentParser(description="md/html → EPUB (→ Kindle)")
     ap.add_argument("inputs", nargs="+"); ap.add_argument("--out", required=True)
-    ap.add_argument("--title", required=True); ap.add_argument("--author", default="Flavio Pies · Veredas OS")
+    ap.add_argument("--title", required=True); ap.add_argument("--author", default="o autor Pies · workspace de origem")
     ap.add_argument("--subtitle", default=""); ap.add_argument("--lang", default="pt-BR")
     ap.add_argument("--send", action="store_true", help="manda ao Kindle (send_to_kindle.py)")
     ap.add_argument("--drive", default="", help="destino rclone, ex.: 'gdrive:40_Acadêmico/.../x.epub'")

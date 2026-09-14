@@ -1,7 +1,7 @@
 #!/bin/bash
-# Veredas OS — elegant-html-slides contrast-audit
+# workspace de origem — elegant-html-slides contrast-audit
 # Purpose:     Auditoria WCAG de contraste real (DOM via Playwright) de um deck Elegant/reMarkable
-# Owner:       Flavio
+# Owner:       O autor
 # Created:     2026-06-19
 # Last-edited: 2026-06-19 (CoS via fast-track)
 # Issue:       fast-track

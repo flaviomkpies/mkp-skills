@@ -1,4 +1,20 @@
 #!/usr/bin/env python3
+def _chrome():
+    """Acha o Chrome/Chromium: $CHROME_BIN, depois PATH, depois caminhos comuns Linux/macOS."""
+    import os, shutil as _sh
+    if os.environ.get("CHROME_BIN"):
+        return os.environ["CHROME_BIN"]
+    for n in ("google-chrome", "google-chrome-stable", "chromium", "chromium-browser"):
+        p = _sh.which(n)
+        if p:
+            return p
+    for p in ("/opt/google/chrome/chrome",
+              "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+              "/Applications/Chromium.app/Contents/MacOS/Chromium"):
+        if os.path.exists(p):
+            return p
+    return "google-chrome"
+
 """[genérico] Deck HTML da Régua (/elegant-html-slides) -> PowerPoint NATIVO editável, shape a shape.
 Lê a geometria real do DOM (Playwright, palco 1920x1080 sem escala) e reconstrói com pptxlib:
 texto vira caixa nativa (Fraunces/Inter, pt-BR), fio vira retângulo de 1px, barra vira shape.
@@ -13,7 +29,7 @@ from pptx.enum.shapes import MSO_SHAPE
 from pptx.oxml.ns import qn
 from patchright.sync_api import sync_playwright
 
-CHROME = '/opt/google/chrome/chrome'
+CHROME = _chrome()
 
 PROBE = r"""
 (idx) => {

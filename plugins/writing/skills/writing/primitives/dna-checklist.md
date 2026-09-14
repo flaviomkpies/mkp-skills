@@ -4,7 +4,7 @@ Checklist genérico baseado no `DNA.md` raiz. Usado por todo modo de polish (`mo
 
 ## Pass DNA — voz
 
-- [ ] **Primeira pessoa, narração:** soa como Flavio falando para um amigo, não palestrando.
+- [ ] **Primeira pessoa, narração:** soa como o autor falando para um amigo, não palestrando.
 - [ ] **Frases curtas predominam.** Sem rodeios antes de chegar ao ponto.
 - [ ] **Sem rebuscamento:** palavras simples, germânicas, curtas.
 - [ ] **Sem tom de coach:** a experiência fala, não o autor.
@@ -53,4 +53,4 @@ Anotar:
 - Quantos itens passaram (ex: "32/36 OK").
 - Quais falharam e onde (frase / parágrafo).
 - Qual edit proposto.
-- Qualquer dúvida que pede decisão de Flavio (ex: "esse 'nós' é genérico ou está se referindo à equipe Mondoré?").
+- Qualquer dúvida que pede decisão do autor (ex: "esse 'nós' é genérico ou está se referindo à equipe Acme?").

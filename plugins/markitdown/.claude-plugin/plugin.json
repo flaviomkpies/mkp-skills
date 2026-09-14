@@ -1,8 +1,10 @@
 {
   "name": "markitdown",
   "description": "Converter PDF, Word, PowerPoint, Excel e imagens em texto para o Claude ler.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": {
     "name": "Flavio Pies"
-  }
+  },
+  "repository": "https://github.com/flaviomkpies/mkp-skills",
+  "license": "MIT"
 }

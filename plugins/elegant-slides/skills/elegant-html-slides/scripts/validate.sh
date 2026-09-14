@@ -1,7 +1,7 @@
 #!/bin/bash
-# Veredas OS — elegant-html-slides validate
+# workspace de origem — elegant-html-slides validate
 # Purpose:     Checagem determinística de um deck Elegant/reMarkable (estrutura/tema/a11y) antes de entregar
-# Owner:       Flavio
+# Owner:       O autor
 # Created:     2026-06-19
 # Last-edited: 2026-06-19 (CoS via fast-track)
 # Issue:       fast-track

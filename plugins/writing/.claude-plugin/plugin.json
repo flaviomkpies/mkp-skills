@@ -1,8 +1,10 @@
 {
   "name": "writing",
-  "description": "Escrita: newsletter, posts curtos, longform, humanizar, fact-check; com DNA de escrita próprio.",
-  "version": "1.0.0",
+  "description": "Escrita: newsletter, posts curtos, longform, humanizar, fact-check; com DNA de escrita proprio.",
+  "version": "1.0.1",
   "author": {
     "name": "Flavio Pies"
-  }
+  },
+  "repository": "https://github.com/flaviomkpies/mkp-skills",
+  "license": "MIT"
 }

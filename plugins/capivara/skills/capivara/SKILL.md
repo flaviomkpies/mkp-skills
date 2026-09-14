@@ -1,14 +1,13 @@
 ---
 name: capivara
 description: "Background check de pessoa ou empresa para due diligence e qualificação: notícias, redes e fontes públicas, risco vermelho/amarelo/verde, perfil salvo no CRM do vault. Use para 'levanta o background de X', 'roda um capivara', 'due diligence dessa pessoa'."
-category: pesquisa-conhecimento
 ---
 
 # Capivara — background check de pessoas
 
-> Origem: ENG-307 (pedido por voz Flavio, 2026-07-18). Nome = gíria de análise de crédito
+> Origem: <issue> (pedido por voz o autor, 2026-07-18). Nome = gíria de análise de crédito
 > ("puxar a capivara" = puxar o CPF/histórico, achado em nota do vault sobre reunião Serasa).
-> Uso: M&A (Okena/Lúcio), qualificação de cliente novo, due diligence de parceiro/sócio.
+> Uso: M&A (Acme/Lúcio), qualificação de cliente novo, due diligence de parceiro/sócio.
 
 ## Princípios (não negociáveis)
 
@@ -20,7 +19,7 @@ category: pesquisa-conhecimento
 3. **Proporcionalidade.** Rodar só com motivo de negócio declarado (M&A, cliente novo, parceiro) —
    é o campo "Contexto de uso" do input, obrigatório. Não é ferramenta de vigilância genérica.
 4. **CPF/CNPJ nunca aparece em canal externo** (comment Linear, email, Telegram) — fica só no
-   frontmatter da nota do vault (dado do CRM interno do Flavio, não segredo de sistema, mas
+   frontmatter da nota do vault (dado do CRM interno do autor, não segredo de sistema, mas
    também não precisa circular).
 5. **Toda afirmação cita a fonte** (URL). Sem fonte = não entra no relatório, ou entra em
    "não confirmado" explícito.
@@ -30,7 +29,7 @@ category: pesquisa-conhecimento
 - **Nome completo** (obrigatório)
 - **CPF ou CNPJ** (opcional — melhora precisão da busca fiscal/jurídica, mas a falta dele não
   bloqueia o levantamento; sem CPF a cobertura fiscal/jurídica fica mais fraca, sinalizar isso)
-- **Contexto de uso** (obrigatório — ex: "M&A target Okena", "cliente novo Mondoré", "parceiro")
+- **Contexto de uso** (obrigatório — ex: "M&A target Acme", "cliente novo Acme", "parceiro")
 
 Se faltar nome → não roda, pede o nome. Se faltar contexto → pergunta rápido antes de rodar
 (o contexto muda o que é relevante: due diligence de M&A pesa mais passivo/litígio societário,
@@ -130,7 +129,7 @@ capivara_risk: vermelho|amarelo|verde
 
 ### 5. Entregar
 
-Link da nota + resumo de 3-5 linhas na resposta pro Flavio. Se o risco for 🔴, dizer isso
+Link da nota + resumo de 3-5 linhas na resposta pro o autor. Se o risco for 🔴, dizer isso
 explícito logo na primeira linha (não enterrar no meio do relatório).
 
 ## Limitações (dizer sempre, não esconder)

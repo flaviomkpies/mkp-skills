@@ -1,8 +1,10 @@
 {
   "name": "watch",
-  "description": "Assistir a um vídeo (link ou arquivo) e resumir, com transcrição por Whisper.",
-  "version": "1.0.0",
+  "description": "Assistir a um video (link ou arquivo) e resumir, com transcricao por Whisper.",
+  "version": "1.0.1",
   "author": {
     "name": "Flavio Pies"
-  }
+  },
+  "repository": "https://github.com/flaviomkpies/mkp-skills",
+  "license": "MIT"
 }

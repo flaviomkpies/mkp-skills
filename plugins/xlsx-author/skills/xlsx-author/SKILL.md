@@ -1,7 +1,6 @@
 ---
 name: xlsx-author
 description: Produce a .xlsx file on disk (headless) instead of driving a live Excel workbook — for managed-agent sessions with no open Office app.
-category: documentos-office
 ---
 
 # xlsx-author

@@ -90,9 +90,7 @@ Finos, monocromáticos, `stroke:var(--ink);fill:none` (ou preenchimento `--ink` 
 
 ## Prova revisada — a caneta por cima do digital (camada opt-in)
 
-> Conceito definido com o Flavio em 21/08/2026, iterando protótipos sobre o W1 RIPack
-> (slide "Um trabalho completo, do início ao fim"). Frase-conceito dele, literal:
-> **"primeira versão feita no digital, mas Flávio pegou a caneta e corrigiu alguns pontos."**
+> Camada opt-in: caneta por cima do digital, para deck que precisa parecer revisado à mão.
 
 O slide tem DUAS camadas com papéis fixos:
 
@@ -100,7 +98,7 @@ O slide tem DUAS camadas com papéis fixos:
 números, kickers, prints de tela, tabelas. Sempre limpa, sempre preta/cinza. Números são
 digitais (nunca circulados à mão); kickers sempre em `--ink`.
 
-**Camada de caneta (a revisão — o que "o Flavio rabiscou" por cima):**
+**Camada de caneta (a revisão — o que "o autor rabiscou" por cima):**
 - **Ícones desenhados à mão** (rough.js): traço monocromático na **cor da caneta que o
   desenhou** — SEM hachura/preenchimento colorido (testado e rejeitado). Contorno único.
 - **Sublinhado de caneta** sob a palavra-chave do título. Em produção entra como **GIF que
@@ -134,7 +132,6 @@ logos Chat/Cowork/Code).
   marginália em **Caveat** 500–600 (adicionar ao `<head>` quando a camada for usada).
 - Em HTML o traço nasce vivo; para **pptx**, pipeline HTML→PNG (Playwright, scale 2) e
   imagem embutida — protótipos de referência em
-  `32_MKP/05_Projetos/02_RIPack/02_Workshops/01_W1_ClaudeChat/02_Roteiro/design_prova_revisada/`.
 - Rejeitados nos testes (não reabrir sem fato novo): hachura colorida nos ícones · véu
   cinza sobre prints (destaque é contorno grosso) · números circulados à mão · kicker
   colorido · ícones geométricos "de biblioteca" (sem graça — a autoria está no traço).
@@ -155,13 +152,9 @@ Title de seção = rótulo curto ou conclusão (so-what), serifa · subhead bold
 
 ---
 
-## Régua W2 — identidade vigente (referência: decks W1/W2 RIPack, set/2026)
+## Régua W2 — identidade vigente (referência: decks W1/W2 Acme, set/2026)
 
-> Adicionado em 05/09/2026 depois de o Flavio recusar dois decks feitos pelas seções acima: *"esse elegant
-> skills estão antigos - veja como fizemos nos casos da ripack workshops. principal falta aqui são as
-> imagens em colunas e em fundos, como na capa"*. **A fonte viva é o pptx mais recente do tema**
-> (`32_MKP/05_Projetos/02_RIPack/02_Workshops/02_W2_Cowork/20260908_Wks2_RIPack_v04.pptx`): abra e olhe
-> 5–6 páginas antes de gerar. O que segue é o que dele se extrai.
+> Identidade vigente: imagens em colunas e em fundo, capa com foto sangrada.
 
 **Tokens:** papel `#FCFCFC` · tinta `#141414` · corpo `#4A4A4A` · mudo `#6E6E6E` · fio `#DADAD6` ·
 **accent laranja `#D37455`** (numerais, setas, chevrons, pontos) · papel quente `#F5F1EC` para texto sobre foto.
@@ -185,7 +178,7 @@ crédito da foto em 14 px no canto inferior direito.
 - **troca entre raias** ("o agente" · "eu", setas accent com o rótulo em cima) para protocolo entre dois lados.
 - **camada de caneta** (§Prova revisada acima) — opcional; o W2 usa post-it amarelo, ícones a traço e marginália.
 
-**Regra do Flavio (05/09/2026): nunca um slide chato — o design representa a ideia.** Lista numerada só quando a
+**Regra do autor (05/09/2026): nunca um slide chato — o design representa a ideia.** Lista numerada só quando a
 ordem é o conteúdo (passos, cronologia); "sempre usar lista numerada não é a melhor direção". Slide de conceito puro
 vira diagrama, proporção, contraste ou foto que carrega a metáfora — não colunas de texto com número na frente.
 
@@ -195,4 +188,6 @@ rawpixel só entregam 960–1300 px (rawpixel com marca d'água acima de 1024): 
 Nunca repetir a mesma foto em dois slides. Tom comum entre as fotos ajuda o deck a ler como uma peça.
 
 **Para PowerPoint nativo:** `/elegant-html-to-pptx` → método W2 (clonar arquétipos do pptx anterior,
-`lib/exemplo_build_regua_w2.py`); `lib/pptx2html.py` gera a versão web do mesmo deck.
+
+---
+

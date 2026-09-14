@@ -105,7 +105,7 @@ def run(pptx, md, html_glob, pptx_glob, n_slides=None, n_faces=None,
 
 if __name__=="__main__":
     B=os.path.dirname(__file__); RP=os.path.join(B,"..","..")
-    run(os.path.join(B,"RIPack_final.pptx"),
-        os.path.join(RP,"20260722_Proposta_RIPack_v3_TEXTO-EDITAVEL.md"),
+    run(os.path.join(B,"deck_final.pptx"),
+        os.path.join(RP,"deck_texto.md"),
         os.path.join(RP,"qc8-*.png"),
         os.path.join(B,"cmp-*.png"))

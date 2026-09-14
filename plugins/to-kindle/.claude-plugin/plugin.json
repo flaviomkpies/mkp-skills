@@ -1,8 +1,10 @@
 {
   "name": "to-kindle",
-  "description": "Documentos (markdown ou HTML) viram um e-book EPUB com capa e sumário para o Kindle.",
-  "version": "1.0.0",
+  "description": "Documentos (markdown ou HTML) viram um e-book EPUB com capa e sumario para o Kindle.",
+  "version": "1.0.1",
   "author": {
     "name": "Flavio Pies"
-  }
+  },
+  "repository": "https://github.com/flaviomkpies/mkp-skills",
+  "license": "MIT"
 }

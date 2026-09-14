@@ -14,7 +14,7 @@ Texto longo onde a estrutura importa tanto quanto cada frase. Diferente de newsl
 ## Princípios comuns
 
 - **DNA central** vale com ressalvas: longform pode aceitar parágrafos um pouco mais densos (até 7 frases) onde a ideia exige.
-- **Outline antes de prosa.** Em longform, NÃO começar pela prosa. Outline em árvore (3 níveis: seção → subseção → bullet) e iterar até Flavio aprovar.
+- **Outline antes de prosa.** Em longform, NÃO começar pela prosa. Outline em árvore (3 níveis: seção → subseção → bullet) e iterar até o autor aprovar.
 - **Research é parte do trabalho.** Longform sempre exige fact-check (`/writing fact-check`) e research em fontes primárias antes de bater o draft.
 - **Iteração de draft em rodadas:** Draft A (estrutural — testar argumento), Draft B (preencher gaps), Draft C (polish + DNA + humanize).
 
@@ -22,7 +22,7 @@ Texto longo onde a estrutura importa tanto quanto cada frase. Diferente de newsl
 
 1. **Tese central em 1 frase** — sem isso, não começa.
 2. **3-5 movimentos do argumento** — cada movimento é uma seção. Cada seção é independentemente defensável.
-3. **Outline em árvore** — sub-bullets dentro de cada movimento. Iterar com Flavio até aprovar.
+3. **Outline em árvore** — sub-bullets dentro de cada movimento. Iterar com o autor até aprovar.
 4. **Research por movimento** — fontes primárias. Marcar `[FONTE: ...]` no outline.
 5. **Draft A** — prosa estrutural. Foco: o argumento aguenta? Sem polish.
 6. **Crítica analítica** (auto-review): forças e fragilidades de cada movimento.
@@ -49,7 +49,7 @@ Estrutura formal obrigatória:
 6. **Implementação** — quem faz, quando, como medir.
 7. **Anexos** — fontes, dados brutos, casos relacionados.
 
-Tom mais formal que ensaio, mas a voz do Flavio continua valendo (DNA central). Sem jargão consultivo padrão.
+Tom mais formal que ensaio, mas a voz do autor continua valendo (DNA central). Sem jargão consultivo padrão.
 
 ## Anti-patterns
 
@@ -62,7 +62,7 @@ Tom mais formal que ensaio, mas a voz do Flavio continua valendo (DNA central). 
 ## Output esperado
 
 Estrutura sugerida no vault:
-- `Efforts/Writings/Longform/<projeto>/<data>-<slug>.md`
+- `<sua pasta de textos>`
 - Versionamento inline (Outline V1 → V2 → V3 aprovado; Draft A → B → C final) seguindo o mesmo padrão de `modes/newsletter.md`.
 
 Frontmatter:
@@ -81,5 +81,5 @@ fact-check: <data do último fact-check>
 ## Quando escalar
 
 - Longform com >10.000 palavras → considerar quebrar em ensaios encadeados (newsletter série).
-- Whitepaper com decisão executiva pesada → escalar para Birdperson + revisão humana adicional antes de publicar.
+- Whitepaper com decisão executiva pesada → escalar para um agente de pesquisa + revisão humana adicional antes de publicar.
 - Capítulo de livro → coordenar com editor / revisor humano se houver.

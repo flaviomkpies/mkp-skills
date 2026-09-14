@@ -446,7 +446,7 @@ Key insight from Wikipedia: "LLMs use statistical algorithms to guess what shoul
 
 ## Tells 2026 + calibração newsletter (adicionado 2026-06-14)
 
-> Catálogo upstream adotado como referência: **blader/humanizer** (33 patterns) e **Aboudjem/humanizer-skill** (43 patterns). Os 24 patterns acima cobrem os tells "clássicos" (Wikipedia AI Cleanup). Abaixo, os tells que só ficaram evidentes em 2026 + os PT-BR calibrados com o Flavio na sessão newsletter "beco sem saída / LeCun".
+> Catálogo upstream adotado como referência: **blader/humanizer** (33 patterns) e **Aboudjem/humanizer-skill** (43 patterns). Os 24 patterns acima cobrem os tells "clássicos" (Wikipedia AI Cleanup). Abaixo, os tells que só ficaram evidentes em 2026 + os PT-BR calibrados com o autor na sessão newsletter "beco sem saída / LeCun".
 
 ### 25. Punchline staccato / cadência uniforme (tell 2026 mais durável)
 **Problema:** fragmentos de 1-2 palavras usados pra drama engenheirado ("Acerta." · "Não me incomoda." · "E quanto."), e várias frases seguidas do mesmo comprimento/ritmo.
@@ -472,76 +472,18 @@ Key insight from Wikipedia: "LLMs use statistical algorithms to guess what shoul
 **Correção:** juntar à oração anterior, começar pelo sujeito, ou usar conectivo que carregue sentido ("Ainda assim", "Mesmo assim").
 
 ### 30. Explicar a piada (over-explanation de exemplo) — 2026-07-03
-**Problema:** destrinchar o mecanismo do exemplo/humor até matá-lo — o modelo não confia que o leitor completa a inferência. Feedback literal do Flavio (artigo Nexo): "Parece uma pessoa autista explicando uma piada. Explicar a piada perde a graça."
+**Problema:** destrinchar o mecanismo do exemplo/humor até matá-lo — o modelo não confia que o leitor completa a inferência. Feedback literal do autor (artigo Nexo): "Parece uma pessoa autista explicando uma piada. Explicar a piada perde a graça."
 **Teste:** se depois de contar o exemplo você escreveu 2+ frases explicando POR QUE ele mostra o problema, corte-as e feche com um arremate seco de no máximo 1 frase.
 **Antes:** > O problema é que ela não entende o contexto óbvio: você vai ao lava-carros pra lavar o carro, então ele precisa estar com você. Sem o carro, a viagem inteira perde o sentido.
 **Depois:** > O conselho é saudável. Só esquece o carro.
 
 ### 31. Hedge duplo em atribuição incerta — 2026-07-03
-**Problema:** empilhar dois hedges pra mesma incerteza numa citação ("A frase é atribuída a X" + "não há evidência sólida de que ele tenha dito isso — é uma daquelas frases que a história repete sem fonte..."). Soa prolixo e inseguro (feedback do Flavio: "quase que inseguro").
+**Problema:** empilhar dois hedges pra mesma incerteza numa citação ("A frase é atribuída a X" + "não há evidência sólida de que ele tenha dito isso — é uma daquelas frases que a história repete sem fonte..."). Soa prolixo e inseguro (feedback do autor: "quase que inseguro").
 **Regra:** UM hedge basta — "atribuída a" já carrega toda a incerteza. Detalhe da proveniência vai pra referência/nota, não pra prosa.
 **Antes:** > A frase é atribuída a William Lever. Não há evidência sólida de que ele tenha dito isso — é uma daquelas frases que a história do marketing repete há um século sem fonte confirmada —, mas o problema que ela descreve é real...
 **Depois:** > A frase é atribuída a William Lever, fundador da Lever Brothers, e circula no mundo dos negócios há décadas. O problema que ela descreve é real...
 
 ### 32. Densidade estatística cumulativa (regra de processo) — 2026-07-03
 **Problema:** não é um tell de frase, é de PROCESSO: cada pedido de rigor isolado parece certo (explicar o escopo do estudo, adicionar o número de agilidade, esclarecer a escala), mas o acúmulo de rodadas vira "bomba de números" — 4 parágrafos de metodologia num texto de opinião (caso Nexo: leitor externo e review comparativo com a série convergiram no mesmo diagnóstico).
-**Regra:** rigor mora no APÊNDICE de evidência (tabela claim→fonte→print, ver /rigor-academico); a prosa fica com os 2-3 números que carregam o argumento. A cada 3-4 rodadas de edição, reler a seção mais densa contra 2 peças publicadas do mesmo veículo e perguntar: "isso tem mais estatística por parágrafo que os pares?"
+**Regra:** rigor mora no APÊNDICE de evidência (tabela claim→fonte→print, ver um fluxo de rigor de fontes); a prosa fica com os 2-3 números que carregam o argumento. A cada 3-4 rodadas de edição, reler a seção mais densa contra 2 peças publicadas do mesmo veículo e perguntar: "isso tem mais estatística por parágrafo que os pares?"
 
-### Calibração Flavio (newsletter) — 2026-06-14
-- **Cortar negative parallelism mesmo sendo assinatura dele.** "Não é modelo. É camada de controle" (post Anatomia) é voz publicada do Flavio, mas em peça nova ele pediu para cortar o molde "não é X, é Y" — virou tell saturado. Reescrever como afirmação direta.
-- **Processo de 2 rodadas funciona:** rodada 1 = tells grossos (parallelism, staccato, rule of three, em-dash); rodada 2 = tells sutis (throat-clearing, intensificadores, aforismo, tecido conectivo). AskUserQuestion item-a-item por rodada (canal preferido do Flavio).
-- **Não trocar um tell por outro:** ao matar staccato, variar comprimento de frase (não cair em cadência uniforme). Ao matar parallelism, não criar hedge.
-
-
----
-
-## Sincronização com o upstream — 2026-09-05 (blader/humanizer v2.11, 17–19/08/2026)
-
-> A cópia acima (24 + tells 2026) foi feita em 14/06/2026. De junho a agosto o upstream teve 12 releases
-> (v2.9 → v2.11): regra de não fabricar, modo arquivo/embutido, texto reescrito em linguagem simples e os
-> padrões abaixo, que o nosso catálogo não tinha ou tinha só de passagem. Gatilho: post da sabatina, em
-> que o Flavio leu a v1 e disse *"still tem muita frase cretina, frase de coach"* — a skill sabia (DNA
-> "sem tom de coach", tell #25) e não pegou, porque nada media. **Agora mede:** `scripts/tells_pt.py`.
-
-### 33. Punchline forçada e fragmento dramático (upstream §31) — o tell da rodada
-**Problema:** cada frase vira uma linha de fecho. Uma frase curta dá ênfase; uma fileira delas soa
-encenada. Irmão do #25 (staccato) e do #28 (aforismo); aqui o foco é o **fecho de parágrafo** que tem
-forma de pull-quote.
-**Antes (v1 do post, 05/09):** > Encontrar fatos é trabalho do agente. Decidir é seu. · > Escolhi o post. · > A costura é dele. O que está escrito é meu.
-**Depois (v2):** > Levantar informação é trabalho dele, nunca seu: o que dá para olhar em arquivo, ferramenta ou na web, ele vai olhar em vez de perguntar. As decisões continuam sendo suas. · > A costura das frases foi dele, e cada afirmação que ficou passou por mim antes.
-**Teste:** `tells_pt.py` conta fragmento (≤4 palavras), kicker (parágrafo fecha com ≤8 palavras) e tricolon (3 curtas seguidas). Post de 1.000 palavras: teto 3.
-
-### 34. Fingir revelar uma verdade mais profunda (upstream §27)
-**Frases:** "a verdadeira questão é", "no fundo", "o que importa de verdade", "a raiz do problema", "o cerne".
-**Correção:** afirmar o ponto sem a moldura de revelação.
-
-### 35. Abertura de falsa franqueza (upstream §33)
-**Frases:** "Sinceramente?", "Olha,", "A verdade é que", "Vamos ser honestos", "Real talk". Pausa teatral antes de um ponto comum.
-**Correção:** dizer o ponto. O tell é o gancho isolado, não a palavra no meio da frase.
-
-### 36. Responder objeção que ninguém fez (upstream §34)
-**Frases:** "Isso não é (só) sobre", "Não estou dizendo que", "Para deixar claro", "Não me entenda mal", "Alguém poderia argumentar… mas".
-**Correção:** cortar a defesa sem dono. Se dentro dela há uma afirmação real, fazer a afirmação. Manter só objeção com fonte nomeada ou respondida por inteiro.
-
-### 37. Rejeitar alternativa falsa (upstream §35)
-**Frases:** "Uma opção tentadora seria", "Seria fácil simplesmente", "Você pode pensar que… mas". Opção que nenhum leitor consideraria, rejeitada numa oração e nunca mais citada: sobra de rascunho.
-**Correção:** afirmar a restrição real. Uma rejeição pode ser legítima; várias curtas e soltas são o sinal.
-
-### 38. Negação de cauda (upstream §9, ampliado)
-**Problema:** além de "não é X, é Y", o fecho clipado "…, sem chute", "…, sem surpresa", "…, zero atrito" no lugar de uma oração.
-**Correção:** oração inteira ("sem obrigar o usuário a adivinhar").
-
-### 39. Aberturas repetidas (upstream §11, ampliado)
-**Problema:** três frases seguidas começando com a mesma palavra de conteúdo (anáfora por ritmo). Distinto de repetição deliberada ("Vim, vi, venci").
-
-### Falsos positivos que o upstream passou a listar (não marcar)
-Uma frase curta isolada · travessão isolado, quando o autor usa (no Flavio: **segue zerado por decisão dele**) · abertura repetida deliberada · "sinceramente"/"olha" no meio da frase · aviso de escopo, correção real, objeção nomeada · texto citado ou título (a expressão está sendo **discutida**, não usada) · prosa só "seca" sem tell específico.
-
-### Fontes lidas em 05/09/2026 (para a próxima sincronização)
-- `github.com/blader/humanizer` — SKILL.md v2.11.1, 35 padrões + seção de falsos positivos + "Human details to keep". Commits de 17–19/08/2026. **Reler a cada ~2 meses.**
-- `github.com/Aboudjem/humanizer-skill` — ativo em 02–04/09/2026; agora tem score, fact-check e commit gate (CLI). Não adotado; o nosso gate é o `tells_pt.py`.
-- `en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing` — editada em 05/09/2026; seções novas "Vague expression of connection or association" e "Comment-specific indicators".
-- Matthew Vollmer, *A Field Guide to AI Tells* (Substack, 24/04/2026) — taxonomia lexical/sintática/retórica; nomeia "aphoristic closure" e "hypotactic smoothness, no fragments" (o oposto do #33: prosa sem nenhum tropeço também é tell).
-- `samgalanakis/pilcrow` `_ai-tell-catalog.md` — classifica por **cadência** (fragment cadence, antithesis cadence, hero-tagline imperative, anaphora): a régua de "3 num texto é impressão digital".
-- `tropes.fyi` — diretório de padrões; "It's not X, it's Y" como o mais identificado.
-- **PT-BR:** Canaltech, 19/05/2026 — LinkedIn passa a rebaixar posts com "não é X, é Y" (anúncio de Laura Lorenzetti). MagicPost (blog de fornecedor, pt-br, 05/06/2026) — estudo de 287 mil posts, fórmula de contraste custa ~4,9% de alcance dentro do mesmo autor. **Lacuna:** não achei fonte brasileira de reputação editorial (Folha, Nexo, piauí, linguista) sobre tells de IA em português; o que há é imprensa de tecnologia e fornecedor. Vale nova busca em 2–3 meses.

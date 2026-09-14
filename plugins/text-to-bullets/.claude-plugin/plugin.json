@@ -1,8 +1,10 @@
 {
   "name": "text-to-bullets",
-  "description": "Transformar texto denso em tópicos rastreáveis, cada um com a fonte.",
-  "version": "1.0.0",
+  "description": "Transformar texto denso em topicos rastreaveis, cada um com a fonte.",
+  "version": "1.0.1",
   "author": {
     "name": "Flavio Pies"
-  }
+  },
+  "repository": "https://github.com/flaviomkpies/mkp-skills",
+  "license": "MIT"
 }

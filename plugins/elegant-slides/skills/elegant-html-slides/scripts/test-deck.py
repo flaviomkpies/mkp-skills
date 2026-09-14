@@ -1,10 +1,26 @@
 #!/usr/bin/env python3
+def _chrome():
+    """Acha o Chrome/Chromium: $CHROME_BIN, depois PATH, depois caminhos comuns Linux/macOS."""
+    import os, shutil as _sh
+    if os.environ.get("CHROME_BIN"):
+        return os.environ["CHROME_BIN"]
+    for n in ("google-chrome", "google-chrome-stable", "chromium", "chromium-browser"):
+        p = _sh.which(n)
+        if p:
+            return p
+    for p in ("/opt/google/chrome/chrome",
+              "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+              "/Applications/Chromium.app/Contents/MacOS/Chromium"):
+        if os.path.exists(p):
+            return p
+    return "google-chrome"
+
 """
-Veredas OS — test-deck (suíte de testes determinística de deck HTML)
+workspace de origem — test-deck (suíte de testes determinística de deck HTML)
 
 Purpose:     Roda asserts contra o DOM renderizado de um deck elegant-html-slides
              (sobreposição/posição, pontuação, sinais aritméticos, controller, console).
-Owner:       Flavio
+Owner:       O autor
 Created:     2026-06-24
 Last-edited: 2026-06-24 (via skill elegant-html-slides)
 Issue:       fast-track
@@ -144,7 +160,7 @@ async def run(path, chrome, font_var_threshold=6):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('deck'); ap.add_argument('--chrome', default='/opt/google/chrome/chrome')
+    ap.add_argument('deck'); ap.add_argument('--chrome', default=_chrome())
     ap.add_argument('--json'); ap.add_argument('--font-var', type=int, default=6)
     a = ap.parse_args()
     res = asyncio.run(run(a.deck, a.chrome, a.font_var))

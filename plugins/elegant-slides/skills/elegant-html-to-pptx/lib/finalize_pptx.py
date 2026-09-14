@@ -41,7 +41,7 @@ def _theme(xml):
     fs=tel.find(Q(A,'fontScheme'))
     fs.find(Q(A,'majorFont')).find(Q(A,'latin')).set('typeface',SERIF_LIGHT)
     fs.find(Q(A,'minorFont')).find(Q(A,'latin')).set('typeface',SANS)
-    root.set('name','RI Pack — Elegant P&B')
+    root.set('name','Acme — Elegant P&B')
     return etree.tostring(root,xml_declaration=True,encoding='UTF-8',standalone=True)
 
 def _layout_name(xml, name):
@@ -103,6 +103,6 @@ def finalize(in_path, out_path):
     print(f"tema aplicado + {len(font_bytes)} faces embutidas -> {os.path.basename(out_path)}")
 
 if __name__=="__main__":
-    src=sys.argv[1] if len(sys.argv)>1 else os.path.join(os.path.dirname(__file__),"RIPack_deck.pptx")
-    dst=sys.argv[2] if len(sys.argv)>2 else os.path.join(os.path.dirname(__file__),"RIPack_final.pptx")
+    src=sys.argv[1] if len(sys.argv)>1 else os.path.join(os.path.dirname(__file__),"deck.pptx")
+    dst=sys.argv[2] if len(sys.argv)>2 else os.path.join(os.path.dirname(__file__),"deck_final.pptx")
     finalize(src,dst)

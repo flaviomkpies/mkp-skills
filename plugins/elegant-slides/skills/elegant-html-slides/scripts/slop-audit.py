@@ -1,13 +1,29 @@
 #!/usr/bin/env python3
+def _chrome():
+    """Acha o Chrome/Chromium: $CHROME_BIN, depois PATH, depois caminhos comuns Linux/macOS."""
+    import os, shutil as _sh
+    if os.environ.get("CHROME_BIN"):
+        return os.environ["CHROME_BIN"]
+    for n in ("google-chrome", "google-chrome-stable", "chromium", "chromium-browser"):
+        p = _sh.which(n)
+        if p:
+            return p
+    for p in ("/opt/google/chrome/chrome",
+              "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+              "/Applications/Chromium.app/Contents/MacOS/Chromium"):
+        if os.path.exists(p):
+            return p
+    return "google-chrome"
+
 """
-Veredas OS — slop-audit (camada 2: anti-AI-slop semântico via Haiku)
+workspace de origem — slop-audit (camada 2: anti-AI-slop semântico via Haiku)
 
 Purpose:     Extrai o texto de cada slide (título + corpo) e pede a um modelo barato
              (Haiku) para flagar padrões de AI-slop e violações de voz que regex não pega:
              travessão, hedging, "não apenas… mas também", filler consulting genérico,
              CTA inspiracional, recomendação em material M&A neutro, action-title que é
              rótulo (não conclusão). Também o teste "história pelos títulos".
-Owner:       Flavio
+Owner:       O autor
 Created:     2026-06-24
 Last-edited: 2026-06-24 (via skill elegant-html-slides)
 Issue:       fast-track
@@ -64,7 +80,7 @@ def _parse(txt):
 def call_haiku(slides, model):
     payload="\n".join(f"[{s['i']}] TÍTULO: {s['title']}\n  SUBT: {s['sub']}\n  CORPO: {' | '.join(s['body'])}" for s in slides)
     user=f"Audite estes slides:\n\n{payload}"
-    # Caminho 1 — API (portável, fora do Veredas): exige ANTHROPIC_API_KEY + lib anthropic
+    # Caminho 1 — API (portável, fora do workspace de origem): exige ANTHROPIC_API_KEY + lib anthropic
     key=os.environ.get('ANTHROPIC_API_KEY')
     if key:
         try:
@@ -74,7 +90,7 @@ def call_haiku(slides, model):
             return _parse(msg.content[0].text)
         except Exception as e:
             return None, f"API anthropic falhou: {e}"
-    # Caminho 2 — claude -p (Veredas/OAuth). Regra ENG-228: euid=0 → rodar como ubuntu.
+    # Caminho 2 — claude -p (workspace de origem/OAuth). Regra <issue>: euid=0 → rodar como ubuntu.
     import subprocess, shutil
     if not shutil.which('claude'):
         return None, "sem ANTHROPIC_API_KEY e sem CLI `claude` — defina a chave ou rode num ambiente com claude."
@@ -90,7 +106,7 @@ def call_haiku(slides, model):
 
 def main():
     ap=argparse.ArgumentParser(); ap.add_argument('deck')
-    ap.add_argument('--chrome', default='/opt/google/chrome/chrome')
+    ap.add_argument('--chrome', default=_chrome())
     ap.add_argument('--model', default='claude-haiku-4-5'); ap.add_argument('--json')
     a=ap.parse_args()
     slides=asyncio.run(extract(a.deck, a.chrome))

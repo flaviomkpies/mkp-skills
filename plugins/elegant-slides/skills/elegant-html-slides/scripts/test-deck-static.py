@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Veredas OS — test-deck-static (Tier 0: testes determinísticos SEM browser)
+workspace de origem — test-deck-static (Tier 0: testes determinísticos SEM browser)
 
 Purpose:     Análise estática do HTML por <section> (1 por slide): regras de texto
              (ponto final, sinal aritmético, travessão, bola), estrutura e navegação
@@ -8,7 +8,7 @@ Purpose:     Análise estática do HTML por <section> (1 por slide): regras de t
              milissegundos — gate rápido ANTES do tier browser (test-deck.py), que só
              precisa entrar para o que depende de render (sobreposição c/ altura
              dinâmica, valor populado por JS, console).
-Owner:       Flavio
+Owner:       O autor
 Created:     2026-06-24
 Last-edited: 2026-06-24 (via skill elegant-html-slides)
 Issue:       fast-track

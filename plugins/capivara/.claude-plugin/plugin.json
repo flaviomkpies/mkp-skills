@@ -1,8 +1,10 @@
 {
   "name": "capivara",
-  "description": "Pesquisa de fundo sobre pessoa ou empresa: notícias, redes e fontes públicas.",
-  "version": "1.0.0",
+  "description": "Pesquisa de fundo sobre pessoa ou empresa: noticias, redes e fontes publicas.",
+  "version": "1.0.1",
   "author": {
     "name": "Flavio Pies"
-  }
+  },
+  "repository": "https://github.com/flaviomkpies/mkp-skills",
+  "license": "MIT"
 }

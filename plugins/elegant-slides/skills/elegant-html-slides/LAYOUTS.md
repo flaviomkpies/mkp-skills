@@ -23,7 +23,7 @@ Regra de ouro: **1 slide ≠ 1 layout fixo**. Num deck de 5+ slides, use ≥3 ar
 | Z | **Fechamento** | contato / 1 frase final | igual à capa, invertida (monograma grande + 1 linha + dados de contato em mono) |
 
 ## Estruturas de conteúdo (onde vão título e conteúdo — VARIAR sempre)
-O arquétipo (A–Z) diz o *tipo*; a estrutura diz a *disposição*. Num deck, alternar estruturas evita monotonia. Flavio pediu explicitamente mais variação (2026-06-19).
+O arquétipo (A–Z) diz o *tipo*; a estrutura diz a *disposição*. Num deck, alternar estruturas evita monotonia. O autor pediu explicitamente mais variação (2026-06-19).
 
 | Estrutura | Disposição | Bom para |
 |---|---|---|
@@ -37,13 +37,13 @@ O arquétipo (A–Z) diz o *tipo*; a estrutura diz a *disposição*. Num deck, a
 
 **Split 1/3·2/3 (S2) — gabarito:** coluna esquerda `width:560px` (de 1656 úteis) com eyebrow+título+lead alinhados ao topo; filete vertical opcional (`--hair-strong`, 1px) na divisa; conteúdo à direita a partir de `x≈760`. Título quebra em 2-3 linhas (Fraunces ~48-56px, peso 400). É o layout-cavalo-de-batalha — usar na maioria dos slides de conteúdo.
 
-## Movimento (regra Flavio)
+## Movimento (regra o autor)
 **Animação é EXCEÇÃO — quase nunca usar.** Default = estático. Se houver, máximo fade sutil único (~120ms, sem movimento/translate, sem stagger). Nada de "surgir debaixo", nada escalonado. Slide estático bem composto > slide animado.
 
 ## Princípios de composição
-- **Legenda de gráfico = topo-direito do CONTEÚDO, abaixo do título, alinhada à direita, HORIZONTAL (regra Flavio).** As entradas ficam lado a lado (caixa-rótulo · caixa-rótulo), nunca empilhadas. Posição: dentro da área de conteúdo, canto superior-direito, logo abaixo do subtítulo. NUNCA empilhar verticalmente nem jogar no rodapé. (Registrado 2026-06-22.)
+- **Legenda de gráfico = topo-direito do CONTEÚDO, abaixo do título, alinhada à direita, HORIZONTAL (regra o autor).** As entradas ficam lado a lado (caixa-rótulo · caixa-rótulo), nunca empilhadas. Posição: dentro da área de conteúdo, canto superior-direito, logo abaixo do subtítulo. NUNCA empilhar verticalmente nem jogar no rodapé. (Registrado 2026-06-22.)
 - **Rótulo de dado em TODAS as séries.** Num gráfico com 2+ séries (ex.: empilhado existente+novo), cada série leva seu próprio rótulo de valor — não só o total. O callout de leitura (o "olhe aqui") fica **ao lado da série que ele descreve**, com **linha-guia (leader)** apontando para ela; não solto num canto.
-- **⚓ Alinhamento vertical = INFERIOR — REGRA CANÔNICA INVIOLÁVEL (Flavio, recorrente; reincidente 2026-06-22 e 2026-06-23).** O cabeçalho (eyebrow+título+lead) fica no topo; o **container de conteúdo** (da metade do slide para baixo) **ancora SEMPRE na base**, logo acima do `.foot`. Gabarito ÚNICO do container: `<div style="position:absolute;left:120px;right:120px;bottom:104px;">` com `align-items:end` nos grids internos. Se o conteúdo não preenche a altura, o respiro fica ENTRE o subtítulo e o conteúdo — o conteúdo assenta na baseline, nunca flutua no topo deixando vazio embaixo.
+- **⚓ Alinhamento vertical = INFERIOR — REGRA CANÔNICA INVIOLÁVEL (o autor, recorrente; reincidente 2026-06-22 e 2026-06-23).** O cabeçalho (eyebrow+título+lead) fica no topo; o **container de conteúdo** (da metade do slide para baixo) **ancora SEMPRE na base**, logo acima do `.foot`. Gabarito ÚNICO do container: `<div style="position:absolute;left:120px;right:120px;bottom:104px;">` com `align-items:end` nos grids internos. Se o conteúdo não preenche a altura, o respiro fica ENTRE o subtítulo e o conteúdo — o conteúdo assenta na baseline, nunca flutua no topo deixando vazio embaixo.
   - **PROIBIDO no bloco de conteúdo:** `margin-top:`, `top:<n>px`, `align-items:start`/`flex-start`. Qualquer um desses ancora no topo e deixa vazio embaixo = o erro recorrente.
   - **Se o conteúdo é alto e colide com o subtítulo estando ancorado na base:** a saída é **comprimir o conteúdo** (reduzir font-size/padding/densidade da tabela) OU encurtar o subtítulo. **NUNCA** trocar a ancoragem para `margin-top`/`top:`. A base é fixa; o que cede é a densidade. (Foi exatamente aqui que escorreguei na página de CMV — mudei p/ `margin-top` ao ver overlap, em vez de comprimir.)
   - **Checagem de finalização (todo slide, obrigatória):** `grep` o markup do slide por `margin-top` e `top:` dentro do container de conteúdo. Achou → está errado, troca por `bottom:`. A base do conteúdo deve cair na MESMA linha horizontal em todos os slides do deck.

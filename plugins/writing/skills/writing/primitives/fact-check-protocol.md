@@ -35,11 +35,11 @@ Máximo 250 palavras. Direto. Se não encontrar, marque "Não verificável" com 
 
 1. **WebFetch real, não inferência.** Se o agente diz "encontrei a URL X com a frase Y" mas não consegue colar o trecho verbatim do WebFetch, é alucinação. Marcar não-verificável.
 
-2. **Quote em artigo ≠ quote da pessoa atribuída.** Se a frase aparece num artigo da Medium / Forbes / etc, é o autor do artigo escrevendo. Atribuir ao autor real, não à pessoa sobre quem o artigo fala. Caso real (ENG-216 / BIZ-172): frase "It is not a model. It is a control layer..." atribuída inicialmente ao Steinberger → na verdade era descrição editorial de artigo Global Times Singapore.
+2. **Quote em artigo ≠ quote da pessoa atribuída.** Se a frase aparece num artigo da Medium / Forbes / etc, é o autor do artigo escrevendo. Atribuir ao autor real, não à pessoa sobre quem o artigo fala. Caso real (<issue> / <issue>): frase "It is not a model. It is a control layer..." atribuída inicialmente ao Steinberger → na verdade era descrição editorial de artigo Global Times Singapore.
 
 3. **Confirmar página existe E contém o trecho.** WebSearch que retorna URL plausível não basta — sempre WebFetch + grep do trecho.
 
-4. **Limitar tokens.** Spawn Haiku, max 250 palavras de output. Pesquisa ampla → escalar para Sonnet via Birdperson, não Haiku.
+4. **Limitar tokens.** Spawn Haiku, max 250 palavras de output. Pesquisa ampla → escalar para Sonnet com um modelo mais capaz, não Haiku.
 
 5. **Múltiplas fontes ajudam.** Se 2 fontes independentes confirmam o mesmo, confiança alta. 1 fonte só, marcar como "single-source — confirmar antes de publicar".
 
@@ -53,7 +53,7 @@ Máximo 250 palavras. Direto. Se não encontrar, marque "Não verificável" com 
 - **Atribuição de produto/projeto** — quem criou, quando, sob qual licença.
 - **URL como referência** — sempre WebFetch antes de incluir no post.
 
-## Output do fact-check para Flavio
+## Output do fact-check para o autor
 
 3 níveis de aprovação:
 

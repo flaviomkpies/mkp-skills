@@ -11,17 +11,19 @@ Output: **um arquivo HTML self-contained** (CSS/JS inline), 16:9 em qualquer tel
 
 ## ⚠️ Identidade vigente (05/09/2026)
 
-O tema branco/Fraunces das seções abaixo ficou para trás: a Régua de hoje é a dos decks **W1/W2 RIPack**
+O tema branco/Fraunces das seções abaixo ficou para trás: a Régua de hoje é a dos decks **W1/W2 Acme**
 (Literata + Inter, numerais laranja, **fotos em colunas e em fundo full-bleed**, chevrons, diagramas).
 Leia **`design.md §Régua W2`** antes de gerar e, se houver deck anterior do tema, **abra o pptx mais
-recente e olhe 5–6 páginas**: ele é a fonte, não este arquivo. Regra do Flavio: **nunca um slide chato,
+recente e olhe 5–6 páginas**: ele é a fonte, não este arquivo.
+Regra do autor: **nunca um slide chato,
 o design representa a ideia**; lista numerada só quando a ordem é o conteúdo. Para `.pptx`, o caminho
 preferido virou clonar arquétipos (`/elegant-html-to-pptx` §método W2).
 
+**Entrega que ele assina como aluno é a exceção**, e ela suspende a regra acima: chrome da Régua,
+repertório gráfico desligado, base de texto pesada — `design.md §Exceção sancionada — entrega acadêmica`.
+
 ## Quando NÃO usar
-- `.pptx` editável de verdade → skill de pptx (`/mondore_pptx`, se aceitar a marca Mondoré; ou outra).
 - Documento corrido (`.docx`) → skill de docx.
-- Deck com **marca de empresa** (cores/logo Mondoré) → `/mondore-html-slides`. Esta aqui é **neutra**.
 
 ## Fronteira de entrega (decisão — HTML × PPTX)
 **HTML é a entrega final** para: web, leave-behind navegável, apresentação em tela, link/Vercel, e PDF (via `export-pdf.sh`, com modo e-ink P&B pra reMarkable). É o formato canônico desta skill.
@@ -47,16 +49,15 @@ preferido virou clonar arquétipos (`/elegant-html-to-pptx` §método W2).
 | `engine/data-deck.md` + `data-deck-example.html` | **Deck número-pesado:** single source `DATA` + `renderAll` (título/KPI/tabela/gráfico saem de 1 lugar → mata o stale-rework). | Gerar BP/financeiro |
 | `scripts/model-to-data.py` | **Excel (aba DECK) → bloco `DATA` do deck** (`--update-deck`). Deck e modelo = 1 fonte, zero transcrição. | Gerar/atualizar deck do modelo |
 | `engine/components-example.html` | **Componentes de dado testados** (kpiRow · dataTable · barChart · waterfall) — copie + ligue DATA. Excelência por construção, passa a suíte. | Montar slide analítico |
-| `engine/layouts-example.html` | **Layouts narrativos testados** (cardsRow · hubSpokes · staircase · processFlow), portados do catálogo `mondore_pptx`. | Montar slide conceitual/diagrama |
+| `engine/layouts-example.html` | **Layouts narrativos testados** (cardsRow · hubSpokes · staircase · processFlow), portados do catálogo `um catálogo de padrões de marca`. | Montar slide conceitual/diagrama |
 | `engine/animation-patterns.md` | Referência de animações CSS/JS | Geração |
 | `scripts/extract-pptx.py` | Extrai conteúdo de .pptx | Modo conversão |
 | `scripts/export-pdf.sh` | Exporta o HTML pra PDF (Playwright) | Export |
-| `scripts/deploy.sh` | Deploy Vercel (URL viva) | Share opcional |
 
 ---
 
 ### Camada opcional — "Prova revisada"
-Deck que pede calor humano/didático (workshop, aula): ver `design.md §Prova revisada` — camada de caneta (ícones rough, sublinhado-GIF, marginália Caveat) por cima da Régua digital. Conceito Flavio 21/08/2026.
+Deck que pede calor humano/didático (workshop, aula): ver `design.md §Prova revisada` — camada de caneta (ícones rough, sublinhado-GIF, marginália Caveat) por cima da Régua digital. Conceito o autor 21/08/2026.
 
 ## Workflow
 
@@ -137,7 +138,7 @@ Nunca entregar um deck que a skill não OLHOU. Loop:
      texto sobre texto, tinta fora do palco, `<p:style>` (sombra do tema), conector como fio.
      **Emita `xmlns` nos SVGs**: sem ele o arquivo parseia sem namespace e ferramenta
      externa "não acha" texto nenhum.
-   - **Tier 2 — semântico (Haiku):** `python3 scripts/slop-audit.py deck.html` → flags de AI-slop/voz (hedging, clichê, filler, afirmar o óbvio, recomendação em material neutro, action-title=rótulo, subtítulo=paráfrase) + teste "história pelos títulos". **Sinaliza, não reprova.** Usa `ANTHROPIC_API_KEY` (portável) ou, no Veredas, `claude -p` (OAuth) automático.
+   - **Tier 2 — semântico (Haiku):** `python3 scripts/slop-audit.py deck.html` → flags de AI-slop/voz (hedging, clichê, filler, afirmar o óbvio, recomendação em material neutro, action-title=rótulo, subtítulo=paráfrase) + teste "história pelos títulos". **Sinaliza, não reprova.** Usa `ANTHROPIC_API_KEY` (portável) ou, no workspace de origem, `claude -p` (OAuth) automático.
 2. `bash scripts/export-pdf.sh deck.html /tmp/qc.pdf` + `pdftoppm -png -r 70 /tmp/qc.pdf /tmp/qc` → **Read cada PNG**.
 3. Criticar cada slide contra o checklist (**uma a uma** — o erro nº1 só aparece olhando a página individual, não o contact-sheet):
    - [ ] **sem sobreposição** (erro mais frequente): tabela/chart subindo no título, painéis empilhados, decoração por cima do texto. Padrão de correção: **conteúdo denso/full-height flui do topo** (ancorar embaixo faz a tabela alta subir sobre o título); conteúdo que não preenche a altura, sim, ancora embaixo.
@@ -188,9 +189,8 @@ Abrir no browser, explicar navegação (setas/espaço/touch, `E` = editar).
 
 ### Fase 6 — Share/Export (opcional)
 - PDF: `bash scripts/export-pdf.sh <arquivo.html>` (1ª vez instala Playwright; use `--compact` pra reduzir). **P&B reMarkable:** setar `--accent:var(--ink)` no `:root` (modo e-ink, ver `design.md`) antes de exportar — o tema já é grayscale-safe.
-- Vercel: `bash scripts/deploy.sh <arquivo.html>`. ⚠️ confirmar comunicação externa com o Flavio antes de deploy público.
 
 ---
 
 ## Crédito
-Motor base: [frontend-slides](https://github.com/zarazhangrui/frontend-slides) (zarazhangrui), MIT — `engine/LICENSE-frontend-slides`. Adaptação Elegant/reMarkable: design system editorial travado (papel + serifa + fios, modo e-ink) + escrita consulting + remoção da escolha de estilo. Derivada da skill `mondore-html-slides` (mesmo motor, tema trocado).
+Motor base: [frontend-slides](https://github.com/zarazhangrui/frontend-slides) (zarazhangrui), MIT — `engine/LICENSE-frontend-slides`. Adaptação Elegant/reMarkable: design system editorial travado (papel + serifa + fios, modo e-ink) + escrita consulting + remoção da escolha de estilo.

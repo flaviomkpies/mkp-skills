@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-Veredas OS — model-to-data (Excel → DATA: estende a fonte única ao modelo)
+workspace de origem — model-to-data (Excel → DATA: estende a fonte única ao modelo)
 
 Purpose:     Lê o bloco de saída de um modelo Excel (aba DECK) e emite o objeto
              `const DATA = {...}` do deck data-driven — ou o injeta direto no deck
              entre os marcadores /* DATA:START */ e /* DATA:END */. Mata a transcrição
              manual modelo→deck e o gap deck↔Excel (deck e modelo viram UMA fonte).
-Owner:       Flavio
+Owner:       O autor
 Created:     2026-06-24
 Last-edited: 2026-06-24 (via skill elegant-html-slides)
 Issue:       fast-track
