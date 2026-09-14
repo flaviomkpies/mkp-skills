@@ -4,7 +4,7 @@ Skills da casa para o Claude Code, mantidas pelo Flavio.
 
 ## Instalar (uma vez)
 
-No Claude Code:
+No Claude Code, com acesso a este repositório privado na sua conta do GitHub:
 
 ```
 /plugin marketplace add flaviomkpies/mkp-skills
