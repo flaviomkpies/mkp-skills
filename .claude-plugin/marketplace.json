@@ -30,12 +30,6 @@
       "version": "1.0.1"
     },
     {
-      "name": "markitdown",
-      "description": "Converter PDF, Word, PowerPoint, Excel e imagens em texto para o Claude ler.",
-      "source": "./plugins/markitdown",
-      "version": "1.0.1"
-    },
-    {
       "name": "text-to-bullets",
       "description": "Transformar texto denso em topicos rastreaveis, cada um com a fonte.",
       "source": "./plugins/text-to-bullets",
@@ -45,12 +39,6 @@
       "name": "capivara",
       "description": "Pesquisa de fundo sobre pessoa ou empresa: noticias, redes e fontes publicas.",
       "source": "./plugins/capivara",
-      "version": "1.0.1"
-    },
-    {
-      "name": "watch",
-      "description": "Assistir a um video (link ou arquivo) e resumir, com transcricao por Whisper.",
-      "source": "./plugins/watch",
       "version": "1.0.1"
     }
   ]
