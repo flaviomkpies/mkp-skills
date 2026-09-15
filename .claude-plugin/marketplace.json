@@ -42,6 +42,18 @@
       "version": "1.0.0"
     },
     {
+      "name": "desdobrar",
+      "description": "After-action review de sessao: decide se houve aprendizado real, le em tres camadas e roteia cada um para o degrau mais barato.",
+      "source": "./plugins/desdobrar",
+      "version": "1.0.0"
+    },
+    {
+      "name": "kaizen-5s",
+      "description": "Organiza um espaco de trabalho pelos cinco S do Kaizen: separa, guarda no destino canonico, marca, padroniza a cabeca da pasta e registra o que ficou.",
+      "source": "./plugins/kaizen-5s",
+      "version": "1.0.0"
+    },
+    {
       "name": "capivara",
       "description": "Pesquisa de fundo sobre pessoa ou empresa: noticias, redes e fontes publicas.",
       "source": "./plugins/capivara",

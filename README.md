@@ -12,11 +12,11 @@ No Claude Code, com acesso a este repositório privado na sua conta do GitHub:
 /plugin install <nome>@mkp-skills
 ```
 
-Plugins disponíveis: `writing`, `to-kindle`, `elegant-slides`, `xlsx-author`, `text-to-bullets`, `show-me`, `capivara`.
+Plugins disponíveis: `writing`, `to-kindle`, `elegant-slides`, `xlsx-author`, `text-to-bullets`, `show-me`, `desdobrar`, `kaizen-5s`, `capivara`.
 
 ## Antes de usar: leia o ONBOARDING
 
-Quatro plugins precisam de alguma instalação ou configuração antes do primeiro uso. Cada um traz
+Seis plugins precisam de alguma instalação ou configuração antes do primeiro uso. Cada um traz
 um **`ONBOARDING.md`** na raiz, com o passo a passo:
 
 | Plugin | Precisa de | Onboarding |
@@ -24,10 +24,33 @@ um **`ONBOARDING.md`** na raiz, com o passo a passo:
 | **writing** | criar o seu DNA de voz (`/writing dna`) | `plugins/writing/ONBOARDING.md` |
 | **to-kindle** | `pandoc`, `pillow`, endereço Send to Kindle | `plugins/to-kindle/ONBOARDING.md` |
 | **show-me** | `pymupdf`, `requests`, e um e-mail de contato | `plugins/show-me/ONBOARDING.md` |
+| **desdobrar** | nada a instalar; **adaptar ao seu sistema** | `plugins/desdobrar/ONBOARDING.md` |
+| **kaizen-5s** | nada a instalar; **adaptar ao seu sistema** | `plugins/kaizen-5s/ONBOARDING.md` |
 | **elegant-slides** | `python-pptx`, Chrome/Chromium | `plugins/elegant-slides/ONBOARDING.md` |
 
 Os outros (`xlsx-author`, `text-to-bullets`, `capivara`) rodam sem configuração —
 `xlsx-author` pede `pip install openpyxl`.
+
+### O segundo arquivo: `ADAPTAR.md`
+
+**`desdobrar`** e **`kaizen-5s`** não são ferramentas, são **estruturas de raciocínio**. Elas
+carregam um método — como ler o que uma sessão ensinou, como arrumar um espaço de trabalho — e
+o método é a parte que vale copiar. O que não se copia é **onde as coisas moram**: isso é do meu
+sistema, e o seu é outro.
+
+Por isso esses dois plugins trazem um segundo arquivo, o **`ADAPTAR.md`**. Ele não é leitura: é
+um procedimento que o Claude executa **na sua máquina**, uma vez.
+
+> "Leia o ADAPTAR.md do plugin desdobrar e monte meu perfil."
+
+O que acontece: um script só-leitura varre a sua máquina — repositórios git, vaults Obsidian, a
+sua configuração do Claude Code (CLAUDE.md, skills, hooks que você já tem), ferramentas no PATH.
+O que a máquina revela, ele usa. O que ela não revela — onde mora o registro de uma sessão, onde
+mora uma regra, o que nunca pode ser feito sem você aprovar — ele pergunta. No fim escreve o seu
+`references/perfil-local.md`.
+
+Quinze minutos. Sem isso as duas funcionam, mas perguntam o destino de cada coisa toda vez. O
+perfil é seu, fica na sua cópia e não volta para mim.
 
 ## Atualizar
 

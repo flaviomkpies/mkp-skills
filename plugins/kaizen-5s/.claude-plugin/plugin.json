@@ -1,0 +1,10 @@
+{
+  "name": "kaizen-5s",
+  "description": "Organiza um espaco de trabalho pelos cinco S do Kaizen: separa, guarda no destino canonico, marca, padroniza a cabeca da pasta e registra o que ficou.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Flavio Pies"
+  },
+  "repository": "https://github.com/flaviomkpies/mkp-skills",
+  "license": "MIT"
+}
