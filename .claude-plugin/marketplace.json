@@ -36,6 +36,12 @@
       "version": "1.0.1"
     },
     {
+      "name": "show-me",
+      "description": "Caderno de evidencias visual: acha a fonte primaria de cada dado e captura o print da pagina com o trecho destacado.",
+      "source": "./plugins/show-me",
+      "version": "1.0.0"
+    },
+    {
       "name": "capivara",
       "description": "Pesquisa de fundo sobre pessoa ou empresa: noticias, redes e fontes publicas.",
       "source": "./plugins/capivara",

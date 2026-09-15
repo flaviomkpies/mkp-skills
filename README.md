@@ -12,17 +12,18 @@ No Claude Code, com acesso a este repositório privado na sua conta do GitHub:
 /plugin install <nome>@mkp-skills
 ```
 
-Plugins disponíveis: `writing`, `to-kindle`, `elegant-slides`, `xlsx-author`, `text-to-bullets`, `capivara`.
+Plugins disponíveis: `writing`, `to-kindle`, `elegant-slides`, `xlsx-author`, `text-to-bullets`, `show-me`, `capivara`.
 
 ## Antes de usar: leia o ONBOARDING
 
-Três plugins precisam de alguma instalação ou configuração antes do primeiro uso. Cada um traz
+Quatro plugins precisam de alguma instalação ou configuração antes do primeiro uso. Cada um traz
 um **`ONBOARDING.md`** na raiz, com o passo a passo:
 
 | Plugin | Precisa de | Onboarding |
 |---|---|---|
 | **writing** | criar o seu DNA de voz (`/writing dna`) | `plugins/writing/ONBOARDING.md` |
 | **to-kindle** | `pandoc`, `pillow`, endereço Send to Kindle | `plugins/to-kindle/ONBOARDING.md` |
+| **show-me** | `pymupdf`, `requests`, e um e-mail de contato | `plugins/show-me/ONBOARDING.md` |
 | **elegant-slides** | `python-pptx`, Chrome/Chromium | `plugins/elegant-slides/ONBOARDING.md` |
 
 Os outros (`xlsx-author`, `text-to-bullets`, `capivara`) rodam sem configuração —
