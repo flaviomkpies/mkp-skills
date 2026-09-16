@@ -1,6 +1,6 @@
 # VOICE.md — voz do autor aplicada a slide
 
-> **Fonte canônica:** `/writing` → `DNA.md` (skill writing, vault `.agents/skills/writing/DNA.md`). Documento vivo. **Ler antes de redigir qualquer texto de slide.** Este arquivo só adapta o DNA pra copy de deck (telegráfico ≠ prosa).
+> **Fonte canônica:** `/writing` → `DNA.md` (a skill `writing`, se você a tiver). Documento vivo. **Ler antes de redigir qualquer texto de slide.** Este arquivo só adapta o DNA pra copy de deck (telegráfico ≠ prosa).
 > Princípio (do DNA): **o autor escreve, AI assiste. A voz é dele.** A AI organiza, corta, comprime — não inventa voz.
 
 ## Carrega direto do DNA (vale em slide)

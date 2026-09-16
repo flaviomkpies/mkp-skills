@@ -1,7 +1,8 @@
 # Deck data-driven — single source de números (decks número-pesados)
 
 Para BP / modelo financeiro / qualquer deck onde **o mesmo número aparece em vários slides**.
-Resolve o custo que mais doeu numa sessão real: mudar uma base (ex.: EBITDA 8,7→6,1M) e ter
+Resolve o custo que mais doeu numa sessão real: mudar uma base (um indicador que muitos slides
+citam) e ter
 que caçar ~10 referências stale uma a uma. Com esta convenção, **muda 1 lugar e propaga**.
 
 > Deck simples (texto estático, sem números repetidos)? **Não use isto** — segue o `html-template.md`.

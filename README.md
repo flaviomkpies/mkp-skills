@@ -16,7 +16,7 @@ Plugins disponíveis: `writing`, `to-kindle`, `elegant-slides`, `xlsx-author`, `
 
 ## Antes de usar: leia o ONBOARDING
 
-Seis plugins precisam de alguma instalação ou configuração antes do primeiro uso. Cada um traz
+Sete plugins precisam de alguma instalação ou configuração antes do primeiro uso. Cada um traz
 um **`ONBOARDING.md`** na raiz, com o passo a passo:
 
 | Plugin | Precisa de | Onboarding |
@@ -26,19 +26,20 @@ um **`ONBOARDING.md`** na raiz, com o passo a passo:
 | **show-me** | `pymupdf`, `requests`, e um e-mail de contato | `plugins/show-me/ONBOARDING.md` |
 | **desdobrar** | nada a instalar; **adaptar ao seu sistema** | `plugins/desdobrar/ONBOARDING.md` |
 | **kaizen-5s** | nada a instalar; **adaptar ao seu sistema** | `plugins/kaizen-5s/ONBOARDING.md` |
+| **capivara** | nada a instalar; **dizer onde salvar o relatório** | `plugins/capivara/ONBOARDING.md` |
 | **elegant-slides** | `python-pptx`, Chrome/Chromium | `plugins/elegant-slides/ONBOARDING.md` |
 
-Os outros (`xlsx-author`, `text-to-bullets`, `capivara`) rodam sem configuração —
+Os outros dois (`xlsx-author`, `text-to-bullets`) rodam sem configuração —
 `xlsx-author` pede `pip install openpyxl`.
 
 ### O segundo arquivo: `ADAPTAR.md`
 
-**`desdobrar`** e **`kaizen-5s`** não são ferramentas, são **estruturas de raciocínio**. Elas
+**`desdobrar`**, **`kaizen-5s`** e **`capivara`** não são ferramentas prontas, são **estruturas de raciocínio**. Elas
 carregam um método — como ler o que uma sessão ensinou, como arrumar um espaço de trabalho — e
 o método é a parte que vale copiar. O que não se copia é **onde as coisas moram**: isso é do meu
 sistema, e o seu é outro.
 
-Por isso esses dois plugins trazem um segundo arquivo, o **`ADAPTAR.md`**. Ele não é leitura: é
+Por isso esses plugins trazem um segundo arquivo, o **`ADAPTAR.md`**. Ele não é leitura: é
 um procedimento que o Claude executa **na sua máquina**, uma vez.
 
 > "Leia o ADAPTAR.md do plugin desdobrar e monte meu perfil."

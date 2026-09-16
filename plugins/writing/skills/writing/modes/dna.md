@@ -52,4 +52,4 @@ Critério rigoroso. DNA com 100 regras = ninguém lê. DNA com 30 regras testada
 
 Para `show`: relatório formatado, no chat, com regras agrupadas por categoria + origem.
 
-Para `edit`: arquivo `DNA.md` (ou mode específico) atualizado, diff visível em commit/Obsidian, log da mudança em memory persistente se aplicável.
+Para `edit`: arquivo `DNA.md` (ou mode específico) atualizado, diff visível no commit, log da mudança em memory persistente se aplicável.

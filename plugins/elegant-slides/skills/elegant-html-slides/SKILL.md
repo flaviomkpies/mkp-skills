@@ -27,7 +27,7 @@ repertório gráfico desligado, base de texto pesada — `design.md §Exceção 
 
 ## Fronteira de entrega (decisão — HTML × PPTX)
 **HTML é a entrega final** para: web, leave-behind navegável, apresentação em tela, link/Vercel, e PDF (via `export-pdf.sh`, com modo e-ink P&B pra reMarkable). É o formato canônico desta skill.
-**Quem vai EDITAR no PowerPoint → `/elegant-html-to-pptx`** (criada em 22/07/2026, mora no vault). Ela reconstrói o deck **shape a shape em PowerPoint nativo**, com o palco 1920×1080 mapeado 1:1 (6350 EMU/px, 0,5 pt/px): cada texto vira caixa clicável, fio vira retângulo, barra vira shape. Só simbologia complexa (gráfico de linha com dezenas de pontos, glifo desenhado à mão) entra como imagem. Medido no caso IMC 20/08/2026: **99,5/100**, cobertura textual 100%, 322 caixas nativas contra 1 imagem em 15 slides.
+**Quem vai EDITAR no PowerPoint → `/elegant-html-to-pptx`**. Ela reconstrói o deck **shape a shape em PowerPoint nativo**, com o palco 1920×1080 mapeado 1:1 (6350 EMU/px, 0,5 pt/px): cada texto vira caixa clicável, fio vira retângulo, barra vira shape. Só simbologia complexa (gráfico de linha com dezenas de pontos, glifo desenhado à mão) entra como imagem. Medido num caso real: **99,5/100**, cobertura textual 100%, 322 caixas nativas contra 1 imagem em 15 slides.
 > ⚠️ Esta linha dizia, até 20/08/2026, "NÃO converter este HTML→pptx editável (…) perda garantida", e o meio-termo era empacotar screenshots. Ficou **obsoleta** quando a skill irmã nasceu e provou o contrário; o aviso sobrevivente fazia agente parar e refazer o deck do zero. Screenshot 1-por-slide segue existindo como último recurso, não como o caminho.
 
 ## Arquivos

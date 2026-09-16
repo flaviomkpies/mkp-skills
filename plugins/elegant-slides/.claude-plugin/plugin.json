@@ -1,7 +1,7 @@
 {
   "name": "elegant-slides",
   "description": "Deck HTML preto e branco em 16:9 (elegant-html-slides) e conversao do deck em PowerPoint editavel (elegant-html-to-pptx).",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": {
     "name": "Flavio Pies"
   },

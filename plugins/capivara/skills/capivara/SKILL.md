@@ -1,142 +1,134 @@
 ---
 name: capivara
-description: "Background check de pessoa ou empresa para due diligence e qualificação: notícias, redes e fontes públicas, risco vermelho/amarelo/verde, perfil salvo no CRM do vault. Use para 'levanta o background de X', 'roda um capivara', 'due diligence dessa pessoa'."
+description: "Background check de pessoa ou empresa para due diligence e qualificação: notícias, redes e fontes públicas, classificação de risco vermelho/amarelo/verde e um relatório com fonte em cada afirmação. Use para 'levanta o background de X', 'roda um capivara', 'due diligence dessa pessoa'."
+allowed-tools: Read, Write, Edit, Bash, Glob, Grep, WebSearch, WebFetch, AskUserQuestion
 ---
 
-# Capivara — background check de pessoas
+# Capivara — background check de pessoa e empresa
 
-> Origem: <issue> (pedido por voz o autor, 2026-07-18). Nome = gíria de análise de crédito
-> ("puxar a capivara" = puxar o CPF/histórico, achado em nota do vault sobre reunião Serasa).
-> Uso: M&A (Acme/Lúcio), qualificação de cliente novo, due diligence de parceiro/sócio.
+> O nome vem da gíria de análise de crédito no Brasil: "puxar a capivara" é puxar o histórico
+> de alguém.
+>
+> **Antes da primeira vez:** leia o `ADAPTAR.md` do plugin — ele define **onde o relatório é
+> salvo** no seu sistema. Sem isso a skill grava um markdown na pasta atual, que funciona mas
+> não conversa com o lugar onde você guarda gente.
 
 ## Princípios (não negociáveis)
 
-1. **Só fontes públicas/abertas.** Web search, páginas públicas de LinkedIn/Twitter/Instagram,
-   busca pública do JusBrasil/tribunais, imprensa. **Nunca** login-wall scraping, nunca burlar
-   paywall/CAPTCHA, nunca Serasa pago (é serviço pago — sinalizar como "não coberto", não simular).
-2. **Não é parecer jurídico nem certidão.** É um raio-x de reputação/exposição pra apoiar decisão
-   de negócio. Achado "vermelho" = motivo pra aprofundar com advogado/Serasa pago, não veredito.
-3. **Proporcionalidade.** Rodar só com motivo de negócio declarado (M&A, cliente novo, parceiro) —
-   é o campo "Contexto de uso" do input, obrigatório. Não é ferramenta de vigilância genérica.
-4. **CPF/CNPJ nunca aparece em canal externo** (comment Linear, email, Telegram) — fica só no
-   frontmatter da nota do vault (dado do CRM interno do autor, não segredo de sistema, mas
-   também não precisa circular).
-5. **Toda afirmação cita a fonte** (URL). Sem fonte = não entra no relatório, ou entra em
-   "não confirmado" explícito.
+1. **Só fonte pública e aberta.** Busca na web, páginas públicas de redes sociais, busca pública
+   de tribunais, imprensa. **Nunca** raspar atrás de login, nunca burlar paywall ou CAPTCHA,
+   nunca simular consulta a birô pago — se não dá para cobrir, o relatório diz "não coberto".
+2. **Não é parecer jurídico nem certidão.** É um raio-x de reputação e exposição para apoiar
+   decisão de negócio. Achado vermelho é motivo para aprofundar com advogado ou com uma consulta
+   paga, não um veredito.
+3. **Proporcionalidade.** Só roda com um **motivo de negócio declarado** — é campo obrigatório
+   da entrada. Não é ferramenta de vigilância sobre pessoa privada, e não se usa para checar
+   alguém com quem você não tem relação de negócio.
+4. **Documento de identidade nunca sai em canal externo.** CPF ou CNPJ, quando informados, ficam
+   só no arquivo local; não vão para mensagem, e-mail ou comentário em ferramenta compartilhada.
+5. **Toda afirmação cita a fonte.** Sem URL, não entra no relatório — ou entra numa linha
+   marcada "não confirmado".
 
-## Input
+## Entrada
 
 - **Nome completo** (obrigatório)
-- **CPF ou CNPJ** (opcional — melhora precisão da busca fiscal/jurídica, mas a falta dele não
-  bloqueia o levantamento; sem CPF a cobertura fiscal/jurídica fica mais fraca, sinalizar isso)
-- **Contexto de uso** (obrigatório — ex: "M&A target Acme", "cliente novo Acme", "parceiro")
+- **CPF ou CNPJ** (opcional — melhora a busca fiscal e jurídica; sem ele a cobertura cai, e o
+  relatório precisa dizer isso)
+- **Contexto de uso** (obrigatório — "avaliando aquisição", "cliente novo", "sócio em potencial")
 
-Se faltar nome → não roda, pede o nome. Se faltar contexto → pergunta rápido antes de rodar
-(o contexto muda o que é relevante: due diligence de M&A pesa mais passivo/litígio societário,
-qualificação de cliente pesa mais capacidade de pagamento e reputação).
+Sem nome, não roda. Sem contexto, pergunte antes: o contexto muda o que é relevante. Uma
+aquisição pesa passivo e litígio societário; qualificar um cliente pesa capacidade de pagamento e
+reputação.
 
 ## Workflow
 
-### 1. Buscas (WebSearch, 4 frentes em paralelo)
+### 1 · Buscar em quatro frentes, em paralelo
 
-Rodar cada frente com 2-3 queries (nome sozinho + nome com variações/apelidos + nome com
-empresa/contexto conhecido, se houver):
+Duas a três consultas por frente — o nome sozinho, o nome com variações ou apelido, e o nome com
+a empresa, quando você já sabe qual:
 
-- **Notícias:** `"<nome>" notícia`, `"<nome>" entrevista`, `"<nome>" <empresa conhecida>`
-- **Redes sociais:** `"<nome>" LinkedIn`, `"<nome>" Twitter OR X`, `"<nome>" Instagram` —
-  pegar só o que aparece no resultado de busca (headline, bio pública, cargo). Não logar em
-  nada, não seguir link de perfil pedindo login.
-- **Fiscal/jurídico:** `"<nome>" jusbrasil`, `"<nome>" processo`, `"<nome>" CNPJ` (se CNPJ
-  informado: `<CNPJ> CNPJ` direto), `"<nome>" falência OR recuperação judicial OR execução fiscal`
+- **Notícias:** `"<nome>" notícia`, `"<nome>" entrevista`, `"<nome>" <empresa>`
+- **Redes:** `"<nome>" LinkedIn`, `"<nome>" Twitter OR X`, `"<nome>" Instagram` — pegue só o que
+  aparece no resultado da busca (manchete, cargo, bio pública). Não faça login em nada, não siga
+  link que peça autenticação.
+- **Fiscal e jurídico:** `"<nome>" processo`, `"<nome>" CNPJ`, `"<nome>" falência OR recuperação
+  judicial OR execução fiscal`. Fora do Brasil, troque pelos equivalentes locais (registro
+  mercantil, court records, companies house).
 - **Exposição pública:** `"<nome>" palestra OR podcast OR artigo OR livro`
 
-Usar `WebFetch` nas 2-3 fontes mais relevantes de cada frente pra confirmar o conteúdo antes
-de citar (headline de busca pode enganar).
+Abra as duas ou três fontes mais relevantes de cada frente antes de citar: manchete de busca
+engana.
 
-### 2. Classificar risco
+### 2 · Classificar o risco
 
-- 🔴 **Vermelho** — processo criminal, falência/recuperação judicial ativa, notícia negativa
+- 🔴 **Vermelho** — processo criminal, falência ou recuperação judicial ativa, notícia negativa
   recorrente e consistente (fraude, disputa societária pública, litígio trabalhista em massa),
-  CNPJ com pendência fiscal grave visível.
-- 🟡 **Amarelo** — processo cível isolado (comum em qualquer histórico empresarial BR), notícia
-  negativa isolada/antiga, presença digital muito escassa pra alguém no papel esperado (red flag
-  fraco de identidade), dado inconsistente entre fontes.
-- 🟢 **Verde** — nada de relevante encontrado, presença pública consistente com o perfil
-  declarado, sem achado fiscal/jurídico.
-- **Sem achado ≠ verde automático se a cobertura foi fraca** (ex: sem CPF, nome muito comum) —
-  nesse caso o risco vira 🟡 com nota "cobertura insuficiente pra concluir".
+  pendência fiscal grave visível.
+- 🟡 **Amarelo** — processo cível isolado (comum em qualquer histórico empresarial), notícia
+  negativa isolada ou antiga, presença pública escassa demais para o papel que a pessoa diz
+  ocupar, dado inconsistente entre fontes.
+- 🟢 **Verde** — nada relevante encontrado, presença pública consistente com o perfil declarado.
 
-### 3. Montar o relatório
+**Ausência de achado não é verde quando a cobertura foi fraca.** Sem documento, ou com nome muito
+comum, o risco é 🟡 com a nota "cobertura insuficiente para concluir". Confundir duas pessoas com
+o mesmo nome é o erro mais caro desta skill — confirme sobrenome, empresa ou cidade antes de
+consolidar qualquer achado numa pessoa.
 
-Estrutura fixa (markdown):
+### 3 · Montar o relatório
 
 ```markdown
-## Capivara — Background Check <Nome> (<data>)
+## Capivara — <Nome> (<data>)
 
-**Contexto do levantamento:** <contexto de uso>
+**Contexto:** <motivo de negócio declarado>
 **Risco geral:** 🔴/🟡/🟢 <um parágrafo de motivo>
 
 ### Identidade confirmada
-<cargo/empresa atual, formação, histórico profissional resumido — só o que tem fonte>
+<cargo, empresa, formação, histórico — só o que tem fonte>
 
 ### Presença digital
-- LinkedIn: <achado ou "não localizado">
-- Twitter/X: <achado ou "não localizado">
-- Instagram: <achado ou "não localizado">
+- LinkedIn / X / Instagram: <achado, ou "não localizado">
 
 ### Notícias e exposição pública
-<lista de achados relevantes, cada um com data + fonte>
+<cada achado com data e fonte>
 
-### Fiscal/jurídico
-<achados de JusBrasil/tribunais/CNPJ — cada um com fonte>
-**Cobertura:** <"com CPF/CNPJ" ou "sem CPF/CNPJ — busca só por nome, cobertura reduzida">
+### Fiscal e jurídico
+<achados, cada um com fonte>
+**Cobertura:** <"com documento" ou "só por nome — cobertura reduzida">
 
-### Resumo executivo — oportunidade e risco
-<3-5 linhas: o que isso significa pra decisão de negócio no contexto declarado>
+### O que isso significa para a decisão
+<3 a 5 linhas, no contexto declarado>
 
 ### Fontes
-<lista de URLs citadas>
+<todas as URLs citadas>
 
 ---
-*Gerado por /capivara em <data>. Não substitui parecer jurídico/Serasa pago. Fontes públicas via web search.*
+*Levantamento por fontes públicas. Não substitui parecer jurídico nem consulta a birô de crédito.*
 ```
 
-### 4. Salvar no vault (CRM)
+### 4 · Salvar — onde o seu perfil disser
 
-Reusa a convenção do CRM existente (`Atlas/Notes/Index/People/`, ver
-`project_crm_people_notes` na memória) em vez de criar taxonomia paralela:
+`references/perfil-local.md` responde três coisas: **onde** o relatório vai, **como** o arquivo
+se chama e **o que** vai no cabeçalho dele.
 
-1. Procurar nota existente com esse nome em `Atlas/Notes/Index/People/`.
-2. **Se existe:** anexar a seção "## Capivara — Background Check..." ao final do corpo
-   (preserva histórico de rodadas anteriores — não sobrescreve) + atualizar frontmatter
-   (chaves abaixo).
-3. **Se não existe:** criar nota nova nesse mesmo diretório usando o template
-   `Atlas/Utilities/Templates/People Note.md` como base + a seção Capivara.
+Sem perfil, o padrão é um markdown em `./capivara/<nome-em-minúsculas>-<AAAA-MM-DD>.md`, e a
+skill avisa que está usando o padrão.
 
-Frontmatter — chaves adicionadas pela skill (não mexer nas chaves geridas pelo `crm_sync.py`:
-`email, phone, LastConversation, LastMeeting, LastWhatsApp, NextMeeting, ContactChannels,
-Interactions90d, crm_synced`):
+Duas regras valem em qualquer destino:
 
-```yaml
-tags:
-  - class/people
-  - wf/agents
-cpf: "<só se informado>"
-cnpj: "<só se informado>"
-capivara_last_check: <data ISO>
-capivara_risk: vermelho|amarelo|verde
-```
+- **Rodada nova acrescenta, não sobrescreve.** Se já existe registro dessa pessoa, a seção
+  datada entra no fim. O histórico de como a leitura mudou vale mais que a foto de hoje.
+- **O documento de identidade fica no arquivo, nunca no resumo** que você manda por mensagem.
 
-### 5. Entregar
+### 5 · Entregar
 
-Link da nota + resumo de 3-5 linhas na resposta pro o autor. Se o risco for 🔴, dizer isso
-explícito logo na primeira linha (não enterrar no meio do relatório).
+O caminho do arquivo e um resumo de 3 a 5 linhas. **Se o risco é 🔴, isso é a primeira linha** —
+nunca enterrado no meio do relatório.
 
-## Limitações (dizer sempre, não esconder)
+## Limitações (diga sempre, não esconda)
 
-- Sem acesso a Serasa/SPC pago, birôs de crédito, PEP (pessoa politicamente exposta) oficial —
-  só o que aparece em busca pública.
-- JusBrasil/tribunais via busca pública tem cobertura parcial (nem todo processo é indexado,
-  segredo de justiça não aparece).
-- Nome comum sem CPF = risco real de confundir duas pessoas — o relatório sinaliza isso.
-- Não é ferramenta de compliance regulatório (KYC bancário, PLD) — é apoio de decisão informal.
+- Sem acesso a birô de crédito pago, nem a lista oficial de pessoa politicamente exposta.
+- Busca pública de tribunal tem cobertura parcial: nem todo processo é indexado, e segredo de
+  justiça não aparece.
+- Nome comum sem documento é risco real de confundir duas pessoas — o relatório sinaliza.
+- Não serve a compliance regulatório (KYC bancário, prevenção à lavagem). É apoio de decisão
+  informal.

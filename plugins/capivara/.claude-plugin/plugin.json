@@ -1,7 +1,7 @@
 {
   "name": "capivara",
-  "description": "Pesquisa de fundo sobre pessoa ou empresa: noticias, redes e fontes publicas.",
-  "version": "1.0.1",
+  "description": "Background check de pessoa ou empresa por fontes publicas, com classificacao de risco e fonte em cada afirmacao.",
+  "version": "1.0.2",
   "author": {
     "name": "Flavio Pies"
   },

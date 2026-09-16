@@ -12,8 +12,7 @@
 
 O QA visual (Read dos PNGs) pega layout. **Não pega número errado nem stale.** São dois modos distintos:
 
-- **NÃO confie em ler número de PNG renderizado/escalado.** Eu li "R$8,1M" onde era "R$9,3M" e "16,2"
-  onde era "14,7" — o screenshot reduzido engana. Para CONFERIR VALOR, leia o DOM:
+- **NÃO confie em ler número de PNG renderizado/escalado.** Já li um número por outro num PNG escalado — o screenshot reduzido engana. Para CONFERIR VALOR, leia o DOM:
   ```js
   // medir o valor real renderizado, não o olho no PNG
   [...document.getElementById('cf-body').querySelectorAll('tr')].map(tr=>
@@ -36,8 +35,7 @@ flaga "mesmo rótulo, valores diferentes" falha dos dois jeitos — **(a)** tabl
 falso-positivo em tabela com mais de uma coluna de rótulo (ex.: "Produto + Frente" — "Ác.
 Nítrico" Coleta vs Venda viram o mesmo rótulo), e quantas colunas são rótulo NÃO é genérico
 (71 FP num deck limpo); **(b)** só-prosa cross-slide dá 0 FP mas **perde o stale real**,
-porque em prosa a métrica vem antes OU depois do valor ("R$8,7M de EBITDA" vs "EBITDA de
-R$8,7M") e capturar os dois lados reintroduz o FP. **Baixo-FP e eficaz são incompatíveis sem
+porque em prosa a métrica vem antes OU depois do valor ("<valor> de EBITDA" vs "EBITDA de <valor>") e capturar os dois lados reintroduz o FP. **Baixo-FP e eficaz são incompatíveis sem
 config por-deck** (declarar quais rótulos são a mesma métrica) — o que fere a genericidade.
 Logo: consistência numérica fica **manual** (medir os números-chave pelo DOM, acima). Não
 re-implemente como check genérico — um teste que não pega o bug que promete é falsa segurança.
@@ -112,16 +110,16 @@ concatenados numa linha de centenas de KB), onde a ferramenta Edit não casa:
 
 ## 4. Integridade analítica — a regra que mais importa
 
-Esta passou do HTML pro número, e foi o erro que o autor mais cobrou.
+Esta passou do HTML para o número, e é a que custa mais caro.
 
-- **NUNCA "conta de chegada" (plug).** Montei uma ponte com uma linha de −968 calibrada para bater num
-  alvo acordado. O o autor perguntou direto: "foi bottom-up ou conta de chegada?". Era plug. **Cada linha
+- **NUNCA "conta de chegada" (plug).** Uma ponte cuja última linha existe só para fechar no alvo acordado é plug, e a pergunta
+  "foi bottom-up ou conta de chegada?" sempre chega. **Cada linha
   de uma ponte/cascata tem que ter origem rastreável na fonte.** Se o bottom-up não bate no número alvo,
   **diga isso** (mostre o resíduo nomeado, ou que o alvo é negociado/aproximado) — não esconda num "outros".
-- **Atribuição de fonte é fato, não conveniência.** O deck atribuía R$8M a um "laudo Diligia (Fev/26)"
-  que (a) não existia (a DD era minuta de dez/25) e (b) dizia outra coisa (~R$5M). Fact-check multi-fonte
+- **Atribuição de fonte é fato, não conveniência.** Um deck já atribuiu um número a um laudo que não existia: o documento real era uma
+  minuta anterior, e dizia outra coisa. Fact-check multi-fonte
   antes de cravar quem disse o quê. (Regra: não expor o autor com número/atribuição errada.)
-- **Mudança de base cascateia — mapeie o cascateamento ANTES.** Trocar o EBITDA de 8,7→6,1M tocou DRE,
+- **Mudança de base cascateia — mapeie o cascateamento ANTES.** Trocar a base de um indicador toca DRE,
   one-pager, gráfico, comparativo, sensibilidade, LL, geração de caixa. Avise que cascateia e ofereça a
   decisão, em vez de mexer num slide e deixar o resto inconsistente.
 - **Reportado vs ajustado é dualidade legítima — rotule.** Ao exibir um "ajustado", preserve o

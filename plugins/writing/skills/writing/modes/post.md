@@ -75,7 +75,7 @@ Ver memory `feedback_versioning_h1_inline.md` para regra completa.
 
 ## Output esperado
 
-Arquivo `.md` na pasta apropriada do vault (perguntar ao autor se não óbvio):
+Arquivo `.md` na pasta que você usa para textos (pergunte, se não for óbvio):
 - vinculado à newsletter → derivar do átomo `<sua pasta de textos>`; salvar o post curto em `<sua pasta de textos>`.
 - `<sua pasta de textos>` se for standalone.
 

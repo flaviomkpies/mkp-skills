@@ -100,7 +100,7 @@ Além disso, revisão visual slide a slide (herdado do /elegant-html-slides): se
 
 ## Gotchas caros (aprendidos)
 
-### Os dois que estragam TODO fio do tema (medidos no caso IMC, 20/08/2026)
+### Os dois que estragam TODO fio do tema (medidos no caso Acme, 20/08/2026)
 
 O tema é feito de fios finos. Estes dois bugs atacam exatamente isso, e nenhum aparece no XML
 (que fica correto) — só na medição do pixel renderizado.
@@ -144,7 +144,7 @@ mais os cinzas do deck em `PALETTE`. Fraunces não vem em `fonts/`: baixe o vari
 - Entregar pptx + PDF lado a lado, nome versionado YYYYMMDD_nome_vN, nunca sobrescrever.
 
 ## Saída
-- final.pptx (editável) + .pdf na pasta da issue no vault.
+- final.pptx (editável) + .pdf na pasta do trabalho.
 - Bloco de nota de consistência (as 7 dimensões + total) no report/Linear.
 
 ## Verificação no MOTOR REAL (não confie só no LibreOffice)

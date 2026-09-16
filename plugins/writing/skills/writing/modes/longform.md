@@ -61,7 +61,7 @@ Tom mais formal que ensaio, mas a voz do autor continua valendo (DNA central). S
 
 ## Output esperado
 
-Estrutura sugerida no vault:
+Estrutura sugerida:
 - `<sua pasta de textos>`
 - Versionamento inline (Outline V1 → V2 → V3 aprovado; Draft A → B → C final) seguindo o mesmo padrão de `modes/newsletter.md`.
 

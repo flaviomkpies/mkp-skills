@@ -4,8 +4,8 @@
 Quatro classes de defeito que a casa já produziu e pagou:
   1. texto colidindo com texto  (rótulo + microcopy no caso CAPM 21/08)
   2. forma fora do palco        (conteúdo empurrado além do slide)
-  3. <p:style> presente         (traz a sombra do tema Office; IMC 20/08)
-  4. conector usado como fio    (renderiza ~10px fora do PowerPoint; IMC 20/08)
+  3. <p:style> presente         (traz a sombra do tema Office; Acme 20/08)
+  4. conector usado como fio    (renderiza ~10px fora do PowerPoint; Acme 20/08)
 mais fonte fora do tema.
 
     python3 check_pptx.py deck.pptx [--fontes "Fraunces,Inter,Inter SemiBold"]
